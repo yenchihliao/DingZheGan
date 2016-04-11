@@ -22,6 +22,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def update
+    parse_products
   end
 
   private
@@ -65,7 +66,8 @@ class ProductsController < ApplicationController
     end
 
     def parse_products
-      File.readlines('../assets/products').each do |line|
+      file = File.join(Rails.root, 'app', 'controller', 'assets', 'products')
+      File.readlines(file).each do |line|
         columns = line.split(' ')
         vendorSN = columns[0].to_i
         vendorTitle = columns[1]
