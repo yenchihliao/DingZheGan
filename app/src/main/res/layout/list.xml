@@ -5,25 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="start|left|top"
-    android:background="@color/colorLightOrange"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/colorPrimary">
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="3"
-        android:background="@color/colorButton">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="10"
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ShoppingTitle"
+            android:id="@+id/ListTitleText"
+            android:textColor="@color/colorWhite"
+            android:textSize="30sp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp" />
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
             android:id="@+id/ListTitle"
-            android:src="@drawable/listtitle"
+            android:src="@drawable/logowhite"
             android:contentDescription="@string/ListTitleDescription"
-            android:layout_gravity="left"
-            android:background="@color/colorButton"
-            android:scaleType="centerInside" />
+            android:scaleType="fitEnd"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp" />
 
     </LinearLayout>
 
@@ -31,33 +43,120 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/scrollView"
-        android:layout_weight="7">
+        android:layout_weight="1">
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:id="@+id/ScrollListLayout">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="300dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:paddingTop="50dp"
+                android:paddingBottom="50dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/Tea1TextFrame"
+                            android:src="@drawable/textframe"
+                            android:scaleType="fitXY"
+ />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/Tea1"
+                            android:id="@+id/TeaTitle1"
+                            android:layout_gravity="center"
+                            android:textColor="@color/colorText"
+                            android:textSize="30sp"
+                            android:padding="15dp"
+                            android:gravity="center_vertical|center_horizontal" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <ImageButton
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/Tea1InfoButton"
+                            android:src="@drawable/morebtn"
+                            android:scaleType="fitXY"
+                            android:background="?android:selectableItemBackground"
+                            android:contentDescription="@string/InfoButtonDescription"
+                            android:onClick="GoInfoTea1"
+                            android:layout_weight="1"
+ />
+
+                        <ImageButton
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/Tea1BuyButton"
+                            android:src="@drawable/cartbtn"
+                            android:scaleType="fitXY"
+                            android:background="?android:selectableItemBackground"
+                            android:contentDescription="@string/BuyButtonDescription"
+                            android:onClick="GoBuyTea1"
+                            android:layout_weight="1"
+ />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/TeaImage1"
+                    android:src="@drawable/tea1"
+                    android:contentDescription="@string/TeaImage1Description"
+                    android:scaleType="center"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/Tea1"
-                android:id="@+id/TeaTitle1"
+                android:id="@+id/TeaTitle1X"
                 android:textColor="#000000"
                 android:textIsSelectable="true"
                 android:layout_gravity="center"
                 android:padding="5dp"
                 android:textSize="30sp" />
+
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/TeaImage1"
+                    android:id="@+id/TeaImage1X"
                     android:src="@drawable/tea1"
                     android:contentDescription="@string/TeaImage1Description"
                     android:padding="5dp"
@@ -73,7 +172,7 @@
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/Tea1BuyButton"
+                        android:id="@+id/Tea1BuyButtonX"
                         android:src="@drawable/buybutton"
                         android:scaleType="centerInside"
                         android:background="?android:selectableItemBackground"
@@ -84,7 +183,7 @@
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/Tea1InfoButton"
+                        android:id="@+id/Tea1InfoButtonX"
                         android:src="@drawable/infobutton"
                         android:scaleType="centerInside"
                         android:background="?android:selectableItemBackground"
@@ -117,6 +216,7 @@
                     android:padding="5dp"
                     android:layout_weight="4"
                     android:scaleType="fitCenter" />
+
                 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                     xmlns:tools="http://schemas.android.com/tools"
                     android:layout_width="wrap_content"
@@ -263,7 +363,7 @@
             </LinearLayout>
 
 
-
         </LinearLayout>
     </ScrollView>
+
 </LinearLayout>
