@@ -24,6 +24,6 @@ class VendorsController < ApplicationController
   private
 
     def set_vendor
-      @vendor = Vendor.find(params[:id])
+      @vendor = Vendor.find(params[:VendorSN])
     end
 end

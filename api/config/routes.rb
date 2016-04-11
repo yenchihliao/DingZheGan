@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   get 'products', :to => 'products#index'
-  get 'products/:id', :to => 'products#show'
+  get 'products/:ProductSN', :to => 'products#show'
   post 'products', :to => 'products#update'
 
   get 'vendors', :to => 'vendors#index'
-  get 'vendors/:id', :to => 'vendors#show'
-  get 'vendors/:id/products', :to => 'vendors#show_products'
+  get 'vendors/:VendorSN', :to => 'vendors#show'
+  get 'vendors/:VendorSN/products', :to => 'vendors#show_products'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

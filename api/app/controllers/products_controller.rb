@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    render json: set_product(params[:ProductSN].to_i)
+    render json: get_product(params[:ProductSN].to_i)
     # render json: @product
   end
 
@@ -61,6 +61,7 @@ class ProductsController < ApplicationController
       else
         create_update_vendor(vendorID, vendorName)
         Product.create(:ProductSN => id, :ProductVendor => vendorID, :ProductTitle => hash["ProductTitle"], :ProductNo => hash["ProductNo"], :SellPrice => hash["SellPrice"], :SellPriceCNY => hash["SellPriceCNY"], :ProductQuantity => hash["ProductQuantity"], :ProductIntroduction => hash["ProductIntroduction"], :StyleTitleA => hash["StyleTitleA"], :StyleTitleB => hash["StyleTitleB"], :LargeIcon => hash["LargeIcon"], :SmallIcon => hash["SmallIcon"], :ProductPhoto1 => hash["ProductPhoto1"], :ProductPhoto2 => hash["ProductPhoto2"], :ProductPhoto3 => hash["ProductPhoto3"], :ProductPhoto4 => hash["ProductPhoto4"], :ProductPhoto5 => hash["ProductPhoto5"], :ProductPhoto6 => hash["ProductPhoto6"], :ProductPhoto7 => hash["ProductPhoto7"], :ProductPhoto8 => hash["ProductPhoto8"])
+      end
     end
 
     def parse_products
