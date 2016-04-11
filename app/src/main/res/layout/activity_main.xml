@@ -1,34 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorLightOrange"
-    android:gravity="center_horizontal">
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/KnowledgeButton"
-        android:src="@drawable/knowledgebutton"
-        android:scaleType="fitCenter"
-        android:background="?android:selectableItemBackground"
-        android:padding="5dp"
-        android:contentDescription="@string/KnowledgeButtonDescription"
-        android:onClick="GoKnowledgeActivity"
-        android:layout_above="@+id/ShoppingButton"
-        android:layout_alignLeft="@+id/ShoppingButton"
-        android:layout_alignStart="@+id/ShoppingButton"
-        android:layout_marginBottom="44dp" />
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/ShoppingButton"
-        android:src="@drawable/shoppingbutton"
-        android:scaleType="fitCenter"
-        android:background="?android:selectableItemBackground"
-        android:padding="5dp"
-        android:contentDescription="@string/ShoppingButtonDescription"
-        android:onClick="GoListActivity"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    android:background="@color/colorWhite"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="50">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dummy1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="40">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/TitleCall"
+            android:src="@drawable/logo"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
+            android:layout_centerHorizontal="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="40">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="30dp">
+
+            <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/ShoppingButton"
+                android:src="@drawable/shoppingbutton"
+                android:scaleType="centerInside"
+                android:background="?android:selectableItemBackground"
+                android:contentDescription="@string/ShoppingButtonDescription"
+                android:onClick="GoListActivity"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="20" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ShoppingTitle"
+                android:id="@+id/ShoppingTextView"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/colorText" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="30dp">
+
+            <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/KnowledgeButton"
+                android:src="@drawable/knowledgebutton"
+                android:scaleType="centerInside"
+                android:background="?android:selectableItemBackground"
+                android:contentDescription="@string/KnowledgeButtonDescription"
+                android:onClick="GoKnowledgeActivity"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="20" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/KnowledgeTitle"
+                android:id="@+id/KnowledgeTextView"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/colorText" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="40" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="30dp">
+
+            <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/imageButton"
+                android:src="@drawable/playbutton"
+                android:scaleType="centerInside"
+                android:background="?android:selectableItemBackground"
+                android:contentDescription="@string/ShoppingButtonDescription"
+                android:onClick="GoGameActivity"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="20" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/GameTitle"
+                android:id="@+id/textView"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/colorText" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="30dp">
+
+            <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/imageButton2"
+                android:src="@drawable/achievebutton"
+                android:scaleType="centerInside"
+                android:background="?android:selectableItemBackground"
+                android:contentDescription="@string/KnowledgeButtonDescription"
+                android:onClick="GoAchieveActivity"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="20" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/AchieveTitle"
+                android:id="@+id/textView2"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/colorText" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="45">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dummy2" />
+    </LinearLayout>
+
+
+</LinearLayout>
