@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Tea</string>
+    <string name="ShoppingButtonDescription">(Shopping Button)</string>
+    <string name="KnowledgeButtonDescription">(Knowledge Button)</string>
+    <string name="ListTitleDescription">(List Title)</string>
+    <string name="KnowledgeTitleDescription">(List Title)</string>
+    <string name="TeaImage1Description">(Tea Image 1)</string>
+    <string name="InfoButtonDescription">(Info Button)</string>
+    <string name="BuyButtonDescription">(Buy Button)</string>
+    <string name="KnowledgeTitle">泡茶秘诀</string>
+    <string name="Tea1">精致半斤杉木礼盒</string>
+    <string name="Tea1Price">¥999.00/盒</string>
+    <string name="Tea1Info">商品规格:文汤一包150克；武汤一包150克\n商品特色：杉木原木礼盒搭配『文汤』、『武汤』，两种茶款皆是奇莱山高山乌龙茶由传统竹编焙笼细细烘焙。 『文汤』在慢火细细烘焙后，茶汤细致绵密、入喉滑顺，表现优雅细致的兰花香。 『武汤』呈现出温暖有深度而浑厚的口感，入口回甘明显！</string>
+    <string name="Tea2">精致一斤杉木礼盒</string>
+    <string name="Tea2Price">¥1999.00/盒</string>
+    <string name="Tea2Info">商品规格：金萱、奇莱、汤家红、红水乌龙（各一盒150克）\n商品特色：杉木原木礼盒搭配『金萱』、『奇莱』、『红水乌龙』、『汤家红』，四种茶款能够品尝到来自台湾奇莱山青心乌​​龙所制成的小叶种红茶与焙火乌龙茶。\n★『金萱茶』品种特色会呈现天然的牛奶香气，种植于拔1800公尺，产量非常稀少，独特含蓄的高山奶香，使茶汤甜而不腻，特别受到女性消费者的喜爱。\n★『奇莱』展现的茶汤多层次口感，无论您喜欢清香或熟香的茶叶，必定能成为您体验奇莱山茶最好的第一选择。\n★『红水乌龙』亮红橘色的茶汤，入口圆润滑嫩、清爽甘甜，嘴角会扬起一抹微笑。\n★『汤家红』的成熟水果与坚果的芬芳，是一款品尝后，让人心情愉悦的茶品。</string>
+    <string name="Tea3">奇莱</string>
+    <string name="Tea3Price">¥499.00/包</string>
+    <string name="Tea3Info">商品规格：150克/包\n商品特色：奇莱为轻中焙火的奇莱山高山乌龙茶，烘焙师细心使用热风降低茶叶含水量，并经由烘焙增加茶汤多层次口感，无论您喜欢清香或熟香的茶叶，『奇莱』必定能成为您体验奇莱山茶最好的第一选择。</string>
+    <string name="Tea4">云芽</string>
+    <string name="Tea4Price">¥499.00/包</string>
+    <string name="Tea4Info">商品规格：150克/包\n商品特色：属于轻发酵、无焙火的奇莱山高山乌龙茶，制作工序中，特别使用低温真空烘焙机器制作，此技术能保留住细致高雅的兰花香气与新鲜的青草芳香，值得一提，此茶品『香气的重量』最为细致与轻盈，需要抓紧时间于出汤时细细品茗，正所谓『云养之茶，能解千年之渴』。</string>
+    <string name="BuyIt">确定购买</string>
+    <string name="KnowledgeText1">沏茶工序\n一、烫壶：\n在泡茶之前需用开水烫壶，一则可去除壶内异味；再则热壶有助挥发茶香。\n二、置茶：\n一般泡茶所用茶壶壶口皆较小，需先将茶叶装入茶荷内，此时可将茶荷递给客人，鉴赏茶叶外观，再用茶匙将茶荷内的茶叶拨入壶中，茶量以壶之三分之一为度。\n三、温杯：\n烫壶之热水倒入茶盅内，再行温杯。\n四、高冲：\n冲泡茶叶需高提水壶，水自高点下注，使茶叶在壶内翻滚，散开，以更充分泡出茶味，俗称"高冲"。\n五、低泡：\n泡好之茶汤即可倒入茶盅，此时茶壶壶嘴与茶盅之距离，以低为佳，以免茶汤内之香气无效散发，俗称"低泡"。一般第一泡茶汤与第二泡茶汤在茶盅内混合，效果更佳；第三泡茶汤与第四泡茶汤混合，以此类推。\n六、分茶：\n茶盅内之茶汤再行分入杯内，杯内之茶汤以七分满为度。\n七、敬茶：\n将茶杯连同杯托一并放置客人面前，是为敬茶。\n八、闻香：\n品茶之前，需先观其色，闻其香，方可品其味。\n九、品茶：\n"品"字三个口，一杯茶需分三口品尝，且在品茶之前，目光需注视泡茶师一至两秒，稍带微笑，以示感谢。</string>
+</resources>
