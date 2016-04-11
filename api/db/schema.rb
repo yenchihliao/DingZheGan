@@ -11,23 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411075612) do
+ActiveRecord::Schema.define(version: 20160411161040) do
 
-  create_table "companies", force: :cascade do |t|
-    t.integer  "number"
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "products", primary_key: "ProductSN", force: :cascade do |t|
+    t.integer  "ProductVendor"
+    t.string   "ProductTitle"
+    t.string   "ProductNo"
+    t.integer  "SellPrice"
+    t.float    "SellPriceCNY"
+    t.integer  "ProductQuantity"
+    t.string   "ProductIntroduction"
+    t.string   "StyleTitleA"
+    t.string   "StyleTitleB"
+    t.string   "LargeIcon"
+    t.string   "SmallIcon"
+    t.string   "ProductPhoto1"
+    t.string   "ProductPhoto2"
+    t.string   "ProductPhoto3"
+    t.string   "ProductPhoto4"
+    t.string   "ProductPhoto5"
+    t.string   "ProductPhoto6"
+    t.string   "ProductPhoto7"
+    t.string   "ProductPhoto8"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
-  create_table "products", force: :cascade do |t|
-    t.integer  "number"
-    t.string   "name"
-    t.integer  "price"
-    t.text     "description"
+  add_index "products", ["ProductSN"], name: "index_products_on_ProductSN", unique: true
+
+  create_table "vendors", primary_key: "VendorSN", force: :cascade do |t|
+    t.string   "VendorTitle"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "company_id"
   end
+
+  add_index "vendors", ["VendorSN"], name: "index_vendors_on_VendorSN", unique: true
 
 end

@@ -1,7 +1,5 @@
 class Product < ActiveRecord::Base
-  belongs_to :company
+  self.primary_key = 'ProductSN'
 
-  validates_numericality_of :number
-  validates_presence_of :name
-  validates_numericality_of :price
+  belongs_to :vendor
 end

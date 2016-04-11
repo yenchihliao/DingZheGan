@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  resources :companies do
-    resources :products, :controller => 'company_products'
-  end
+  get 'products', :to => 'products#index'
+  get 'products/:id', :to => 'products#show'
+  post 'products', :to => 'products#update'
 
-  resources :products
+  get 'vendors', :to => 'vendors#index'
+  get 'vendors/:id', :to => 'vendors#show'
+  get 'vendors/:id/products', :to => 'vendors#show_products'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
