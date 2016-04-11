@@ -2,7 +2,7 @@ require 'net/http'
 require 'digest'
 
 class ProductsController < ApplicationController
-  before_action :set_product, only: []
+  before_action :set_product, only: [:show]
 
   # GET /products
   # GET /products.json
@@ -15,14 +15,19 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    render json: get_product(params[:ProductSN].to_i)
-    # render json: @product
+    render json: @product
   end
 
   # POST /products
   # POST /products.json
   def update
     parse_products
+  end
+
+  # POST /products/1
+  # POST /products/1.json
+  def single_update
+    create_update_product(params[:ProductSN].to_i)
   end
 
   private
@@ -53,7 +58,7 @@ class ProductsController < ApplicationController
       end
     end
 
-    def create_update_product(id, vendorID, vendorName)
+    def create_update_product(id, vendorID = 0, vendorName = "")
       hash = get_product(id)["Product"][0]
 
       if Product.exists?(ProductSN: id)
@@ -66,7 +71,7 @@ class ProductsController < ApplicationController
     end
 
     def parse_products
-      file = File.join(Rails.root, 'app', 'controller', 'assets', 'products')
+      file = File.join(Rails.root, 'app', 'assets', 'products')
       File.readlines(file).each do |line|
         columns = line.split(' ')
         vendorSN = columns[0].to_i

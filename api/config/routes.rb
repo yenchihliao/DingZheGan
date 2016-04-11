@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'products', :to => 'products#index'
   get 'products/:ProductSN', :to => 'products#show'
   post 'products', :to => 'products#update'
+  post 'products/:ProductSN', :to => 'products#single_update'
 
   get 'vendors', :to => 'vendors#index'
   get 'vendors/:VendorSN', :to => 'vendors#show'
