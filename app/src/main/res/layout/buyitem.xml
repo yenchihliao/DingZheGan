@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="start|left|top"
+    android:background="@color/colorLightOrange"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Title"
+                android:id="@+id/BuyTitle"
+                android:textSize="30sp"
+                android:padding="5dp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/BuyImage"
+                android:contentDescription="@string/TeaImage1Description"
+                android:layout_gravity="left|right"
+                android:src="@drawable/tea1"
+                android:padding="5dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price"
+                android:id="@+id/BuyPrice"
+                android:padding="5dp"
+                android:textSize="20sp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:id="@+id/minus"
+                    android:textSize="25sp"
+                    android:background="@color/colorButton"
+                    android:textColor="#FFFFFF"
+                    android:padding="5dp"
+                    android:onClick="subtract" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="2"
+                    android:id="@+id/number"
+                    android:editable="false"
+                    android:textIsSelectable="false"
+                    android:padding="5dp"
+                    android:numeric="integer"
+                    android:text="0"
+                    android:textSize="25sp"
+                    android:enabled="false"
+                    android:textColor="#000000" />
+
+                <Button
+                    style="?android:attr/buttonStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+"
+                    android:id="@+id/plus"
+                    android:textSize="25sp"
+                    android:background="@color/colorButton"
+                    android:textColor="#FFFFFF"
+                    android:padding="5dp"
+                    android:onClick="add" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/BuyIt"
+                    android:id="@+id/BuyIt"
+                    android:textColor="#FFFFFF"
+                    android:textSize="25sp"
+                    android:padding="5dp"
+                    android:background="@color/colorButton" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
