@@ -20,9 +20,11 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def order
-    data = { :ExternalOrderNo => params[:ExternalOrderNo], :ProductSN => params[:ProductSN], :StyleA => params[:StyleA], :StyleB => params[:StyleB], :Quantity => params[:Quantity], :Price => params[:Price], :Amount => params[:Amout], :OrderName => params[:OrderName], :OrderAddress => params[:OrderAddress], :OrderEmail => params[:OrderEmail], :OrderPhone => params[:OrderPhone], :ConsigneeName => params[:ConsigneeName], :ConsigneeAddress => params[:ConsigneeAddress], :ConsigneeEmail => params[:ConsigneeEmail], :ConsigneePhone => params[:ConsigneePhone], :DeliverTime => params[:DeliverTime], :Result => params[:Result], :PaymentResult => params[:PaymentResult], :Param => params[:Param] }
+    data = { :ExternalOrderNo => params[:ExternalOrderNo], :ProductSN => params[:ProductSN], :StyleA => params[:StyleA], :StyleB => params[:StyleB], :Quantity => params[:Quantity], :Price => params[:Price], :Amount => params[:Amount], :OrderName => params[:OrderName], :OrderAddress => params[:OrderAddress], :OrderEmail => params[:OrderEmail], :OrderPhone => params[:OrderPhone], :ConsigneeName => params[:ConsigneeName], :ConsigneeAddress => params[:ConsigneeAddress], :ConsigneeEmail => params[:ConsigneeEmail], :ConsigneePhone => params[:ConsigneePhone], :DeliverTime => params[:DeliverTime], :Result => params[:Result], :PaymentResult => params[:PaymentResult], :Param => params[:Param] }
     
     result = create_order(data)
+
+    puts data
 
     if result['ErrorCode'] == 0
       render json: { :status => 0, :data => 'success' }

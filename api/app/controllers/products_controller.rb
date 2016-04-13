@@ -4,9 +4,15 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    products = JSON.parse(Product.all.to_json)
 
-    render json: @products
+    products.collect! do |product|
+      product.delete('created_at')
+      product.delete('updated_at')
+      product
+    end
+
+    render json: { :status => 0, :data => products }
   end
 
   # GET /products/1
