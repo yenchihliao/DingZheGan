@@ -1,6 +1,3 @@
-require 'net/http'
-require 'digest'
-
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show]
 
@@ -36,21 +33,6 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:ProductSN])
     end
 
-    def get_product(id)
-      unix_time = Time.now.to_i
-
-      md5 = Digest::MD5.new
-      md5.update unix_time.to_s + 'kikirace'
-      key = md5.hexdigest
-
-      uri = URI('http://kikistore.csmuse.com/kikistore/api/kikirace_getProductDetail.php')
-      params = { :ProductSN => id, :Language => 2, :Time => unix_time, :Key => key}
-      uri.query = URI.encode_www_form(params)
-
-      res = Net::HTTP.get(uri).force_encoding("UTF-8")
-      hash = JSON.parse(res[2..-1].to_s)
-    end
-
     def create_update_vendor(id, name)
       if Vendor.exists?(VendorSN: id)
       else
@@ -71,7 +53,7 @@ class ProductsController < ApplicationController
     end
 
     def parse_products
-      file = File.join(Rails.root, 'app', 'assets', 'products')
+      file = File.join(Rails.root, 'lib', 'assets', 'products')
       File.readlines(file).each do |line|
         columns = line.split(' ')
         vendorSN = columns[0].to_i
