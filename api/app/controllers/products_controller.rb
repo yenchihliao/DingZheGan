@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: []
+
+  include Send_API
 
   # GET /products
   # GET /products.json

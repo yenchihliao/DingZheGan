@@ -1,5 +1,7 @@
 class OrdersController < ApplicationController
 
+  include Send_API
+
   # GET /orders
   # GET /orders.json
   def index
