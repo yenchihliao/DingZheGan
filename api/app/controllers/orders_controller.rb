@@ -24,8 +24,6 @@ class OrdersController < ApplicationController
     
     result = create_order(data)
 
-    puts data
-
     if result['ErrorCode'] == 0
       render json: { :status => 0, :data => 'success' }
     else
