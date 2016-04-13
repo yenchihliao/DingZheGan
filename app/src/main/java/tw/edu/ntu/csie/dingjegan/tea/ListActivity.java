@@ -3,10 +3,14 @@ package tw.edu.ntu.csie.dingjegan.tea;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -21,6 +25,8 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import java.io.InputStream;
+
 public class ListActivity extends AppCompatActivity {
 
     /**
@@ -29,10 +35,30 @@ public class ListActivity extends AppCompatActivity {
      */
     private GoogleApiClient client;
 
+    Integer pagenum;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list);
+
+        Bundle recv =this.getIntent().getExtras();
+        pagenum = recv.getInt("PageNum");
+        if(pagenum == 1){
+            ImageButton prevpage = (ImageButton) findViewById(R.id.PreviousPageButton);
+            prevpage.setVisibility(4);//invisible
+        }
+        if(pagenum == 10/*MAXPAGE*/){
+            ImageButton nextpage = (ImageButton) findViewById(R.id.NextPageButton);
+            nextpage.setVisibility(4);//invisible
+        }
+        TextView pagetext = (TextView) findViewById(R.id.ListPage);
+        pagetext.setText("第"+pagenum+"页");
+
+        ImageView img1 = (ImageView) findViewById(R.id.TeaListImage1);
+        new DownloadImageTask(img1).execute("http://www.csie.ntu.edu.tw/~b03902051/fc2/station_convert.png");
+
+        /* For dynamic layout.
         LinearLayout ll = (LinearLayout) findViewById(R.id.ScrollListLayout);
         int items = 1;
         for (int k = 1; k <= items; k++) {
@@ -154,7 +180,7 @@ public class ListActivity extends AppCompatActivity {
             img1.setImageResource(R.drawable.tea1);
 
 
-        }
+        }*/
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
@@ -221,6 +247,55 @@ public class ListActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putInt("ItemNum", 4);
         intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void GoPrevPage(View view) {
+        if(pagenum > 1){
+            finish();
+        }
+    }
+
+    public void GoNextPage(View view) {
+        if(pagenum < 10/*MAXPAGE*/){
+            Intent intent = new Intent(this, ListActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("PageNum", pagenum+1);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+    }
+
+    private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
+        ImageView bmImage;
+
+        public DownloadImageTask(ImageView bmImage) {
+            this.bmImage = bmImage;
+        }
+
+        protected Bitmap doInBackground(String... urls) {
+            String urldisplay = urls[0];
+            Bitmap mIcon11 = null;
+            try {
+                InputStream in = new java.net.URL(urldisplay).openStream();
+                mIcon11 = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return mIcon11;
+        }
+
+        protected void onPostExecute(Bitmap result) {
+            //pDlg.dismiss();
+            bmImage.setImageBitmap(result);
+        }}
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
     }
 

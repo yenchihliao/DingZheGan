@@ -19,7 +19,7 @@ public class BuyActivity extends AppCompatActivity {
         Integer item = recv.getInt("ItemNum");
         setContentView(R.layout.buyitem);
         ImageView ItemImage = (ImageView)findViewById(R.id.BuyImage);
-        TextView ItemTitle = (TextView)findViewById(R.id.BuyTitle);
+        TextView ItemTitle = (TextView)findViewById(R.id.BuyItemName);
         TextView ItemPrice = (TextView)findViewById(R.id.BuyPrice);
         switch (item){
             case 1:

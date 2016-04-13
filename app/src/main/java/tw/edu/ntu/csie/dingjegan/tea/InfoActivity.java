@@ -18,7 +18,7 @@ public class InfoActivity extends AppCompatActivity {
         Integer item = recv.getInt("ItemNum");
         setContentView(R.layout.viewitem);
         ImageView ItemImage = (ImageView)findViewById(R.id.ViewImage);
-        TextView ItemTitle = (TextView)findViewById(R.id.ViewTitle);
+        TextView ItemTitle = (TextView)findViewById(R.id.ViewItemName);
         TextView ItemPrice = (TextView)findViewById(R.id.ViewPrice);
         TextView ItemInfo = (TextView)findViewById(R.id.ViewInfo);
         ImageButton ItemBuy = (ImageButton)findViewById(R.id.TeaInfoBuyButton);

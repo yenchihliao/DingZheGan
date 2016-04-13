@@ -5,13 +5,45 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="start|left|top"
-    android:background="@color/colorLightOrange"
+    android:background="@color/colorPrimary"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="10"
+        android:background="@color/colorPrimaryDark" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/BuyTitle"
+            android:id="@+id/BuyTitleText"
+            android:textColor="@color/colorWhite"
+            android:textSize="30sp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/BuyTitle"
+            android:src="@drawable/logowhite"
+            android:contentDescription="@string/ListTitleDescription"
+            android:scaleType="fitEnd"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1" />
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/scrollView" >
+        android:id="@+id/scrollView"
+        android:layout_weight="1">
 
         <LinearLayout
             android:orientation="vertical"
@@ -23,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Title"
-                android:id="@+id/BuyTitle"
+                android:id="@+id/BuyItemName"
                 android:textSize="30sp"
                 android:padding="5dp" />
 
@@ -32,9 +64,10 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/BuyImage"
                 android:contentDescription="@string/TeaImage1Description"
-                android:layout_gravity="left|right"
                 android:src="@drawable/tea1"
-                android:padding="5dp" />
+                android:padding="5dp"
+                android:layout_gravity="left|right"
+                android:scaleType="centerInside" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -56,7 +89,7 @@
                     android:text="-"
                     android:id="@+id/minus"
                     android:textSize="25sp"
-                    android:background="@color/colorButton"
+                    android:background="@color/colorText"
                     android:textColor="#FFFFFF"
                     android:padding="5dp"
                     android:onClick="subtract" />
@@ -83,7 +116,7 @@
                     android:text="+"
                     android:id="@+id/plus"
                     android:textSize="25sp"
-                    android:background="@color/colorButton"
+                    android:background="@color/colorText"
                     android:textColor="#FFFFFF"
                     android:padding="5dp"
                     android:onClick="add" />
@@ -104,7 +137,7 @@
                     android:textColor="#FFFFFF"
                     android:textSize="25sp"
                     android:padding="5dp"
-                    android:background="@color/colorButton" />
+                    android:background="@color/colorText" />
             </LinearLayout>
 
         </LinearLayout>

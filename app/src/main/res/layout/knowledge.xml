@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="start|left|top"
-    android:background="@color/colorLightOrange"
+    android:background="@color/colorPrimary"
     android:orientation="vertical">
     <TextView
         android:layout_width="wrap_content"
@@ -13,8 +13,8 @@
         android:id="@+id/KnowledgeTitle"
         android:text="@string/KnowledgeTitle"
         android:contentDescription="@string/KnowledgeTitleDescription"
-        android:textColor="#000000"
-        android:textSize="30sp"
+        android:textColor="@color/colorText"
+        android:textSize="35sp"
         android:layout_gravity="center" />
 
     <ScrollView
