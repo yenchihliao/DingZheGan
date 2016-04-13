@@ -36,10 +36,6 @@ class ProductsController < ApplicationController
 
   private
 
-    def set_product
-      @product = Product.find(params[:ProductSN])
-    end
-
     def create_update_vendor(id, name)
       if Vendor.exists?(VendorSN: id)
       else
@@ -50,8 +46,12 @@ class ProductsController < ApplicationController
     def create_update_product(id, vendorName = '')
       result = get_product(id)
 
-      unless result['ErrorCode'] == 0 && !result['Product'].empty?
+      unless result['ErrorCode'] == 0
         return { :status => 1, :data => result['ErrorMsg'] }
+      end
+
+      if result['Product'].empty?
+        return { :status => 1, :data => '無此編號' }
       end
 
       hash = result['Product'][0]
