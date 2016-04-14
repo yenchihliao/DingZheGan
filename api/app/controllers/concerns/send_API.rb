@@ -52,7 +52,7 @@ module Send_API
   def query_order_by_orderNo(id)
     hash = query_order
 
-    hash['Order'].select! { |order|  order['ExternalOrderNo'] == id }
+    hash['Order'].select! { |order| order['ExternalOrderNo'] == id }
 
     hash
   end
