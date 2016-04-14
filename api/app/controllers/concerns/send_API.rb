@@ -14,6 +14,14 @@ module Send_API
 
     res = Net::HTTP.get(uri).force_encoding("UTF-8")
     hash = JSON.parse(res[2..-1].to_s)
+
+    photos = ['LargeIcon', 'SmallIcon']
+    (1..8).each { |num| photos << 'ProductPhoto' + num.to_s }
+    photos.each do |photo|
+      hash['Product'][0][photo] = 'none' if hash['Product'][0][photo] == 'http://kikistore.csmuse.com/kikistore/upload/product/'
+    end
+
+    hash
   end
 
   def create_order(data)
