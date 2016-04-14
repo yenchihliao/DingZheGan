@@ -144,7 +144,8 @@
                 android:padding="5dp"
                 android:background="@color/colorText"
                 android:layout_gravity="center"
-                android:onClick="GoUnionPay" />
+                android:onClick="PostServer"
+                android:layout_marginBottom="20dp" />
 
         </LinearLayout>
     </ScrollView>
