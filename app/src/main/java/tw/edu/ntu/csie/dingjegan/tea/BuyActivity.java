@@ -46,7 +46,7 @@ public class BuyActivity extends AppCompatActivity {
 
         //GET JSON
         AsyncHttpRequest task = new AsyncHttpRequest(this,new DownloadImageTask(ItemImage), ItemTitle, ItemPrice);
-        task.execute(getResources().getString(R.string.Server) + teaitems[itemnum]);
+        task.execute(getResources().getString(R.string.ServerProducts) + teaitems[itemnum]);
 
         EditText number = (EditText)findViewById(R.id.number);
         number.setKeyListener(null);

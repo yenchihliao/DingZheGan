@@ -46,5 +46,6 @@
     <string name="ConsigneeAddress">收件人住址</string>
     <string name="ConsigneeEmail">收件人电子邮箱</string>
     <string name="ConsigneePhone">收件人电话</string>
-    <string name="Server">http://52.69.107.107:3000/products/</string>
+    <string name="ServerProducts">http://52.69.107.107:3000/products/</string>
+    <string name="ServerOrders">http://52.69.107.107:3000/orders/</string>
 </resources>
