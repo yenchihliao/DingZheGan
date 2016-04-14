@@ -33,6 +33,8 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+//import com.unionpaysdk.main.*;
+
 public class PayActivity extends AppCompatActivity {
 
     Integer Quantity = 0;
@@ -60,8 +62,10 @@ public class PayActivity extends AppCompatActivity {
     }
     public void GoUnionPay (View view){
 
+
     }
     public void PostServer (View view){
+        GoUnionPay(view);
         EditText OrderName = (EditText)findViewById(R.id.OrderName);
         EditText OrderAddress = (EditText)findViewById(R.id.OrderAddress);
         EditText OrderEmail = (EditText)findViewById(R.id.OrderEmail);
@@ -73,7 +77,7 @@ public class PayActivity extends AppCompatActivity {
 
 
         JsonObject json = new JsonObject();
-
+        //TODO:Eliminate illegal characters ,;:{}[]...
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         JsonElement jelem = gson.fromJson(OrderName.getText().toString(), JsonElement.class);
         json.add("OrderName", jelem);
@@ -91,8 +95,8 @@ public class PayActivity extends AppCompatActivity {
         json.add("ConsigneeEmail", jelem);
         jelem = gson.fromJson(ConsigneePhone.getText().toString(), JsonElement.class);
         json.add("ConsigneePhone", jelem);
-
-        jelem = gson.fromJson("~ExternalOrderNo~", JsonElement.class);
+        String ExternalOrderNo = "~ExternalOrderNo~";
+        jelem = gson.fromJson(ExternalOrderNo, JsonElement.class);
         json.add("ExternalOrderNo", jelem);
         jelem = gson.fromJson(ProductSN.toString(), JsonElement.class);
         json.add("ProductSN", jelem);
@@ -111,13 +115,12 @@ public class PayActivity extends AppCompatActivity {
         jelem = gson.fromJson("TEXT", JsonElement.class);
         json.add("Param", jelem);
 
-        System.out.println("json ready");
+        //System.out.println("json ready");
 
 
-
-        AsyncHttpRequest task = new AsyncHttpRequest(this);
-        task.execute("http://52.69.107.107:3000/orders", json.toString());
-
+        //POST Order Form
+        AsyncHttpRequest taskPOST = new AsyncHttpRequest(this);
+        taskPOST.execute(getResources().getString(R.string.ServerOrders), json.toString());
 
     }
 
@@ -147,7 +150,12 @@ public class PayActivity extends AppCompatActivity {
                 Response response = client.newCall(request).execute();
                 s = response.body().string();
             }catch(IOException e) {
-
+                Context context = getApplicationContext();
+                CharSequence text = "服务器维护中，请见谅";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                finish();
             }
             return s;
         }
@@ -155,6 +163,20 @@ public class PayActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             System.out.println(result);
+            if (result.equals("{\"status\":0,\"data\":\"success\"}")){
+                Context context = getApplicationContext();
+                CharSequence text = "订单传送成功";
+                int duration = Toast.LENGTH_LONG;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                finish();
+            }else{
+                Context context = getApplicationContext();
+                CharSequence text = "订单传送失败，请检查填写栏位及网络设置";
+                int duration = Toast.LENGTH_LONG;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
         }
     }
 }
