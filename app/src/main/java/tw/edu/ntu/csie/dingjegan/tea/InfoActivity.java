@@ -45,7 +45,7 @@ public class InfoActivity extends AppCompatActivity {
 
         //GET JSON
         AsyncHttpRequest task = new AsyncHttpRequest(this,new DownloadImageTask(ItemImage), ItemTitle, ItemPrice, ItemInfo);
-        task.execute("http://user.paga.moe/Rikiu-test/products/" + teaitems[itemnum]);
+        task.execute(getResources().getString(R.string.Server) + teaitems[itemnum]);
 
     }
 

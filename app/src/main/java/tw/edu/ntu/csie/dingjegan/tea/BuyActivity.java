@@ -46,7 +46,7 @@ public class BuyActivity extends AppCompatActivity {
 
         //GET JSON
         AsyncHttpRequest task = new AsyncHttpRequest(this,new DownloadImageTask(ItemImage), ItemTitle, ItemPrice);
-        task.execute("http://user.paga.moe/Rikiu-test/products/" + teaitems[itemnum]);
+        task.execute(getResources().getString(R.string.Server) + teaitems[itemnum]);
 
         EditText number = (EditText)findViewById(R.id.number);
         number.setKeyListener(null);
@@ -159,7 +159,12 @@ public class BuyActivity extends AppCompatActivity {
                 Response response = client.newCall(request).execute();
                 s = response.body().string();
             }catch (IOException e){
-
+                Context context = getApplicationContext();
+                CharSequence text = "服务器维护中，请见谅";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                finish();
             }
             return s;
         }
