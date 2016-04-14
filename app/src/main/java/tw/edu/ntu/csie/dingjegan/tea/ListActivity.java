@@ -1,6 +1,7 @@
 package tw.edu.ntu.csie.dingjegan.tea;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -53,7 +54,8 @@ public class ListActivity extends AppCompatActivity {
 
     Integer pagenum;
 
-
+    int[] teaitems = {2,15,17,28,29,30,77,78,79,80,81,345,346,347,348,349,350,351,352,353,82,83,255};
+    int maxpage = (teaitems.length-1)/5 + 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,24 +68,49 @@ public class ListActivity extends AppCompatActivity {
             ImageButton prevpage = (ImageButton) findViewById(R.id.PreviousPageButton);
             prevpage.setVisibility(4);//invisible
         }
-        if(pagenum == 10/*MAXPAGE*/){
+        if(pagenum == maxpage){
             ImageButton nextpage = (ImageButton) findViewById(R.id.NextPageButton);
             nextpage.setVisibility(4);//invisible
+            int remainder = teaitems.length%5;
+            LinearLayout LLs[]={
+                    (LinearLayout) findViewById(R.id.listItem1),
+                    (LinearLayout) findViewById(R.id.listItem2),
+                    (LinearLayout) findViewById(R.id.listItem3),
+                    (LinearLayout) findViewById(R.id.listItem4),
+                    (LinearLayout) findViewById(R.id.listItem5),
+            };
+            for(int i = remainder; 0 < i && i < 5; i++){
+                LLs[i].setVisibility(8);//gone
+            }
         }
         TextView pagetext = (TextView) findViewById(R.id.ListPage);
         String page = "第" + pagenum + "页";
         pagetext.setText(page);
 
-
-
         //Set images
-        ImageView img1 = (ImageView) findViewById(R.id.TeaListImage1);
-        //new DownloadImageTask(img1).execute("http://www.csie.ntu.edu.tw/~b03902051/fc2/station_convert.png");
-
+        ImageView IVs[]={
+            (ImageView) findViewById(R.id.TeaListImage1),
+            (ImageView) findViewById(R.id.TeaListImage2),
+            (ImageView) findViewById(R.id.TeaListImage3),
+            (ImageView) findViewById(R.id.TeaListImage4),
+            (ImageView) findViewById(R.id.TeaListImage5),
+        };
+        //Set title texts
+        TextView TVs[]={
+                (TextView) findViewById(R.id.TeaTitle1),
+                (TextView) findViewById(R.id.TeaTitle2),
+                (TextView) findViewById(R.id.TeaTitle3),
+                (TextView) findViewById(R.id.TeaTitle4),
+                (TextView) findViewById(R.id.TeaTitle5),
+        };
         //GET JSON
-        AsyncHttpRequest task = new AsyncHttpRequest(this,new DownloadImageTask(img1));
-        int item_num = 6;
-        task.execute("http://140.112.214.131:3000/products/"+item_num);
+        //usage: new DownloadImageTask(img1).execute("http://www.csie.ntu.edu.tw/~b03902051/fc2/station_convert.png");
+        int j = 0;
+        for(int k = 5*(pagenum-1); k < 5*(pagenum-1)+5 && k < teaitems.length; k++){
+            AsyncHttpRequest task = new AsyncHttpRequest(this,new DownloadImageTask(IVs[j]), TVs[j]);
+            task.execute("http://140.112.214.131:3000/products/"+teaitems[k]);
+            j++;
+        }
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -93,7 +120,7 @@ public class ListActivity extends AppCompatActivity {
     public void GoBuyTea1(View view) {
         Intent intent = new Intent(this, BuyActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 1);
+        bundle.putInt("ItemNum", 5 * (pagenum - 1) + 1);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -101,7 +128,7 @@ public class ListActivity extends AppCompatActivity {
     public void GoBuyTea2(View view) {
         Intent intent = new Intent(this, BuyActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 2);
+        bundle.putInt("ItemNum", 5*(pagenum-1)+2);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -109,7 +136,7 @@ public class ListActivity extends AppCompatActivity {
     public void GoBuyTea3(View view) {
         Intent intent = new Intent(this, BuyActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 3);
+        bundle.putInt("ItemNum", 5*(pagenum-1)+3);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -117,7 +144,15 @@ public class ListActivity extends AppCompatActivity {
     public void GoBuyTea4(View view) {
         Intent intent = new Intent(this, BuyActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 4);
+        bundle.putInt("ItemNum", 5*(pagenum-1)+4);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void GoBuyTea5(View view) {
+        Intent intent = new Intent(this, BuyActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("ItemNum", 5*(pagenum-1)+5);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -125,7 +160,7 @@ public class ListActivity extends AppCompatActivity {
     public void GoInfoTea1(View view) {
         Intent intent = new Intent(this, InfoActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 1);
+        bundle.putInt("ItemNum", 5*(pagenum-1)+1);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -133,7 +168,7 @@ public class ListActivity extends AppCompatActivity {
     public void GoInfoTea2(View view) {
         Intent intent = new Intent(this, InfoActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 2);
+        bundle.putInt("ItemNum", 5*(pagenum-1)+2);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -141,7 +176,7 @@ public class ListActivity extends AppCompatActivity {
     public void GoInfoTea3(View view) {
         Intent intent = new Intent(this, InfoActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 3);
+        bundle.putInt("ItemNum", 5*(pagenum-1)+3);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -149,7 +184,15 @@ public class ListActivity extends AppCompatActivity {
     public void GoInfoTea4(View view) {
         Intent intent = new Intent(this, InfoActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 4);
+        bundle.putInt("ItemNum", 5*(pagenum-1)+4);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
+    public void GoInfoTea5(View view) {
+        Intent intent = new Intent(this, InfoActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt("ItemNum", 5*(pagenum-1)+5);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -161,7 +204,7 @@ public class ListActivity extends AppCompatActivity {
     }
 
     public void GoNextPage(View view) {
-        if(pagenum < 10/*MAXPAGE*/){
+        if(pagenum < maxpage){
             Intent intent = new Intent(this, ListActivity.class);
             Bundle bundle = new Bundle();
             bundle.putInt("PageNum", pagenum+1);
@@ -179,6 +222,9 @@ public class ListActivity extends AppCompatActivity {
 
         protected Bitmap doInBackground(String... urls) {
             String urldisplay = urls[0];
+            if(urldisplay == null){
+                return null;
+            }
             Bitmap mIcon11 = null;
             try {
                 InputStream in = new java.net.URL(urldisplay).openStream();
@@ -192,6 +238,13 @@ public class ListActivity extends AppCompatActivity {
 
         protected void onPostExecute(Bitmap result) {
             //pDlg.dismiss();
+            if (result == null){
+                Context context = getApplicationContext();
+                Bitmap nopicBitmap = BitmapFactory.decodeResource(context.getResources(),
+                        R.drawable.nopic);
+                bmImage.setImageBitmap(nopicBitmap);
+                return;
+            }
             bmImage.setImageBitmap(result);
         }
     }
@@ -200,10 +253,12 @@ public class ListActivity extends AppCompatActivity {
 
         private Activity mainActivity;
         private DownloadImageTask task;
-        public AsyncHttpRequest(Activity activity,DownloadImageTask task) {
+        private TextView TV;
+        public AsyncHttpRequest(Activity activity,DownloadImageTask task, TextView TV) {
 
             this.mainActivity = activity;
             this.task = task;
+            this.TV = TV;
         }
 
         @Override
@@ -225,13 +280,21 @@ public class ListActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
+            if (result == null){
+                task.execute(null);
+                TV.setText("暂无商品名称");
+                return;
+            }
             JsonObject myObject = new JsonParser().parse(result).getAsJsonObject();
             int status = myObject.get("status").getAsInt();
-            System.out.println(status);
+            //System.out.println(status);
+            // TODO:if (status == 1)
             JsonObject data = myObject.getAsJsonObject("data");
             String imageURL = data.get("LargeIcon").getAsString();
+            String title = data.get("ProductTitle").getAsString();
 
             task.execute(imageURL);
+            TV.setText(title);
         }
 
     }

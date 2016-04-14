@@ -22,6 +22,9 @@ public class InfoActivity extends AppCompatActivity {
         TextView ItemPrice = (TextView)findViewById(R.id.ViewPrice);
         TextView ItemInfo = (TextView)findViewById(R.id.ViewInfo);
         ImageButton ItemBuy = (ImageButton)findViewById(R.id.TeaInfoBuyButton);
+
+        
+
         switch (item){
             case 1:
                 ItemImage.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.tea1));

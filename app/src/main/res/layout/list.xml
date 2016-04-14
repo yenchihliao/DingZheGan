@@ -131,7 +131,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:id="@+id/TeaListImage1"
-                    android:src="@drawable/tea1"
+                    android:src="@drawable/loading"
                     android:contentDescription="@string/TeaImage1Description"
                     android:scaleType="centerCrop"
                     android:layout_weight="1" />
@@ -214,7 +214,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:id="@+id/TeaListImage2"
-                    android:src="@drawable/tea1"
+                    android:src="@drawable/loading"
                     android:contentDescription="@string/TeaImage1Description"
                     android:scaleType="centerCrop"
                     android:layout_weight="1" />
@@ -296,7 +296,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:id="@+id/TeaListImage3"
-                    android:src="@drawable/tea1"
+                    android:src="@drawable/loading"
                     android:contentDescription="@string/TeaImage1Description"
                     android:scaleType="centerCrop"
                     android:layout_weight="1" />
@@ -378,7 +378,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:id="@+id/TeaListImage4"
-                    android:src="@drawable/tea1"
+                    android:src="@drawable/loading"
                     android:contentDescription="@string/TeaImage1Description"
                     android:scaleType="centerCrop"
                     android:layout_weight="1" />
@@ -460,7 +460,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
                     android:id="@+id/TeaListImage5"
-                    android:src="@drawable/tea1"
+                    android:src="@drawable/loading"
                     android:contentDescription="@string/TeaImage1Description"
                     android:scaleType="centerCrop"
                     android:layout_weight="1" />
