@@ -134,6 +134,15 @@
                 android:hint="@string/ConsigneePhone"
                 android:phoneNumber="true" />
 
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/DeliverTime"
+                android:textSize="25sp"
+                android:layout_marginLeft="20dp"
+                android:hint="@string/DeliverTime"
+                android:phoneNumber="false" />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

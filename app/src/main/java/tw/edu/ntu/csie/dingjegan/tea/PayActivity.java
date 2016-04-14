@@ -25,6 +25,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 import okhttp3.MediaType;
@@ -33,7 +36,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-//import com.unionpaysdk.main.*;
+import com.unionpaysdk.main.*;
 
 public class PayActivity extends AppCompatActivity {
 
@@ -41,6 +44,8 @@ public class PayActivity extends AppCompatActivity {
     Integer Price = 0;
     Integer Amount = 0;
     Integer ProductSN = 0;
+    String ExternalOrderNo = null;
+    String date = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,11 +66,19 @@ public class PayActivity extends AppCompatActivity {
 
     }
     public void GoUnionPay (View view){
+        Intent intent = new Intent (this, UnionPayActivity.class);
 
+        Bundle bundle = new Bundle();
+        bundle.putString("ExternalOrderNo", ExternalOrderNo);
+        bundle.putString("resptime", date);
+        bundle.putInt("amount",Amount);
+        intent.putExtras(bundle);
 
+        startActivity(intent);
     }
     public void PostServer (View view){
-        GoUnionPay(view);
+
+
         EditText OrderName = (EditText)findViewById(R.id.OrderName);
         EditText OrderAddress = (EditText)findViewById(R.id.OrderAddress);
         EditText OrderEmail = (EditText)findViewById(R.id.OrderEmail);
@@ -74,6 +87,7 @@ public class PayActivity extends AppCompatActivity {
         EditText ConsigneeAddress = (EditText)findViewById(R.id.ConsigneeAddress);
         EditText ConsigneeEmail = (EditText)findViewById(R.id.ConsigneeEmail);
         EditText ConsigneePhone = (EditText)findViewById(R.id.ConsigneePhone);
+        EditText DeliverTime = (EditText)findViewById(R.id.DeliverTime);
 
 
         JsonObject json = new JsonObject();
@@ -95,7 +109,20 @@ public class PayActivity extends AppCompatActivity {
         json.add("ConsigneeEmail", jelem);
         jelem = gson.fromJson(ConsigneePhone.getText().toString(), JsonElement.class);
         json.add("ConsigneePhone", jelem);
-        String ExternalOrderNo = "~ExternalOrderNo~";
+        jelem = gson.fromJson(DeliverTime.getText().toString(), JsonElement.class);
+        json.add("DeliverTime", jelem);
+
+        String rand = getRandomString(30);
+        SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date current = new Date();
+        date = sdFormat.format(current);
+        //Log.e("D1",date);
+
+        sdFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+        current = new Date();
+        ExternalOrderNo = sdFormat.format(current)+rand;
+        //Log.e("D2",ExternalOrderNo);
+
         jelem = gson.fromJson(ExternalOrderNo, JsonElement.class);
         json.add("ExternalOrderNo", jelem);
         jelem = gson.fromJson(ProductSN.toString(), JsonElement.class);
@@ -106,8 +133,7 @@ public class PayActivity extends AppCompatActivity {
         json.add("Price", jelem);
         jelem = gson.fromJson(Amount.toString(), JsonElement.class);
         json.add("Amount", jelem);
-        jelem = gson.fromJson("~DeliverTime~", JsonElement.class);
-        json.add("DeliverTime", jelem);
+
         jelem = gson.fromJson("1", JsonElement.class);
         json.add("Result", jelem);
         jelem = gson.fromJson("1", JsonElement.class);
@@ -115,12 +141,33 @@ public class PayActivity extends AppCompatActivity {
         jelem = gson.fromJson("TEXT", JsonElement.class);
         json.add("Param", jelem);
 
+
         //System.out.println("json ready");
+
+        GoUnionPay(view);
 
 
         //POST Order Form
         AsyncHttpRequest taskPOST = new AsyncHttpRequest(this);
         taskPOST.execute(getResources().getString(R.string.ServerOrders), json.toString());
+
+    }
+
+    private static String getRandomString(int len)
+    {
+
+
+        String str = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < len; i++)
+        {
+            int idx = (int)(Math.random() * str.length());
+            sb.append(str.charAt(idx));
+        }
+        String result = sb.toString();
+
+
+        return result;
 
     }
 
@@ -165,7 +212,7 @@ public class PayActivity extends AppCompatActivity {
             System.out.println(result);
             if (result.equals("{\"status\":0,\"data\":\"success\"}")){
                 Context context = getApplicationContext();
-                CharSequence text = "订单传送成功";
+                CharSequence text = "订单传送成功，请继续完成付款";
                 int duration = Toast.LENGTH_LONG;
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
