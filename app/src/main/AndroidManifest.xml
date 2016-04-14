@@ -38,6 +38,10 @@
             android:label="@string/app_name">
         </activity>
         <activity
+            android:name="PayActivity"
+            android:label="@string/app_name">
+        </activity>
+        <activity
             android:name="GameActivity"
             android:label="@string/app_name">
         </activity>

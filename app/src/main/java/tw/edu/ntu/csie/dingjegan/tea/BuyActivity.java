@@ -46,7 +46,7 @@ public class BuyActivity extends AppCompatActivity {
 
         //GET JSON
         AsyncHttpRequest task = new AsyncHttpRequest(this,new DownloadImageTask(ItemImage), ItemTitle, ItemPrice);
-        task.execute("http://140.112.214.131:3000/products/" + teaitems[itemnum]);
+        task.execute("http://user.paga.moe/Rikiu-test/products/" + teaitems[itemnum]);
 
         EditText number = (EditText)findViewById(R.id.number);
         number.setKeyListener(null);
@@ -74,6 +74,27 @@ public class BuyActivity extends AppCompatActivity {
         int val = Integer.parseInt( number.getText().toString() );
         if(val > 0) { val = val - 1; }
         number.setText(String.valueOf(val));
+    }
+
+    public void GoPay (View view){
+        Intent intent = new Intent (this, PayActivity.class);
+        Bundle bundle = new Bundle();
+
+        bundle.putInt("ProductSN",teaitems[itemnum]);
+
+        EditText number = (EditText)findViewById(R.id.number);
+        if(Integer.parseInt(number.getText().toString()) == 0) {
+            return;}
+        bundle.putInt("Quantity", Integer.parseInt(number.getText().toString()));
+
+        TextView price = (TextView)findViewById(R.id.BuyPrice);
+        bundle.putInt("Price", Integer.parseInt(price.getText().toString()));
+
+        TextView title = (TextView)findViewById(R.id.BuyItemName);
+        bundle.putString("ItemTitle", title.getText().toString());
+
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
@@ -160,7 +181,7 @@ public class BuyActivity extends AppCompatActivity {
             String imageURL = data.get("LargeIcon").getAsString();
             task.execute(imageURL);
             Title.setText(data.get("ProductTitle").getAsString());
-            Price.setText("售价:¥"+data.get("SellPriceCNY").getAsString());
+            Price.setText(data.get("SellPriceCNY").getAsString());
             remaining_items = data.get("ProductQuantity").getAsInt();
         }
 

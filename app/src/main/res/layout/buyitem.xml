@@ -68,13 +68,28 @@
                 android:padding="5dp"
                 android:layout_gravity="center"
                 android:scaleType="centerInside" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Blank"
-                android:id="@+id/BuyPrice"
-                android:padding="5dp"
-                android:textSize="20sp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/PriceLabel"
+                    android:id="@+id/BuyPriceLabel"
+                    android:padding="5dp"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Blank"
+                    android:id="@+id/BuyPrice"
+                    android:padding="5dp"
+                    android:textSize="20sp" />
+            </LinearLayout>
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -141,7 +156,8 @@
                     android:textSize="25sp"
                     android:padding="5dp"
                     android:background="@color/colorText"
-                    android:layout_gravity="center" />
+                    android:layout_gravity="center"
+                    android:onClick="GoPay" />
             </LinearLayout>
 
         </LinearLayout>

@@ -108,7 +108,7 @@ public class ListActivity extends AppCompatActivity {
         int j = 0;
         for(int k = 5*(pagenum-1); k < 5*(pagenum-1)+5 && k < teaitems.length; k++){
             AsyncHttpRequest task = new AsyncHttpRequest(this,new DownloadImageTask(IVs[j]), TVs[j]);
-            task.execute("http://140.112.214.131:3000/products/"+teaitems[k]);
+            task.execute("http://user.paga.moe/Rikiu-test/products/"+teaitems[k]);
             j++;
         }
 

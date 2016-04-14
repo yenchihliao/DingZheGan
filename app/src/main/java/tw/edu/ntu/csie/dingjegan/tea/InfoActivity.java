@@ -45,7 +45,7 @@ public class InfoActivity extends AppCompatActivity {
 
         //GET JSON
         AsyncHttpRequest task = new AsyncHttpRequest(this,new DownloadImageTask(ItemImage), ItemTitle, ItemPrice, ItemInfo);
-        task.execute("http://140.112.214.131:3000/products/" + teaitems[itemnum]);
+        task.execute("http://user.paga.moe/Rikiu-test/products/" + teaitems[itemnum]);
 
     }
 
@@ -53,7 +53,7 @@ public class InfoActivity extends AppCompatActivity {
         Intent intent = new Intent (this, BuyActivity.class);
         Bundle bundle = new Bundle();
         bundle.putInt("ItemNum",itemnum);
-        bundle.putIntArray("ItemNumsArray",teaitems);
+        bundle.putIntArray("ItemNumsArray", teaitems);
         intent.putExtras(bundle);
         startActivity(intent);
     }
