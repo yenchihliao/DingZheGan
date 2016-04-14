@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414101118) do
+ActiveRecord::Schema.define(version: 20160414181425) do
 
   create_table "products", primary_key: "ProductSN", force: :cascade do |t|
     t.integer  "ProductVendor"
@@ -38,6 +38,22 @@ ActiveRecord::Schema.define(version: 20160414101118) do
   end
 
   add_index "products", ["ProductSN"], name: "index_products_on_ProductSN", unique: true
+
+  create_table "unionpays", primary_key: "ExternalOrderNo", force: :cascade do |t|
+    t.string   "orderid"
+    t.float    "amount"
+    t.string   "currcode"
+    t.string   "memo"
+    t.string   "resptime"
+    t.integer  "status"
+    t.string   "respcode"
+    t.float    "rmbrate"
+    t.string   "sign"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "unionpays", ["ExternalOrderNo"], name: "index_unionpays_on_ExternalOrderNo", unique: true
 
   create_table "vendors", primary_key: "VendorSN", force: :cascade do |t|
     t.string   "VendorTitle"

@@ -44,9 +44,4 @@ class OrdersController < ApplicationController
     end
   end
 
-  # POST /
-  def union_pay
-    head :no_content
-  end
-
 end

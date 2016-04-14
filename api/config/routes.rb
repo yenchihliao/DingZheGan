@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   get 'orders', :to => 'orders#index'
   get 'orders/:OrderNo', :to => 'orders#query_by_orderNo'
   post 'orders', :to => 'orders#order'
-  post '/', :to => 'orders#union_pay'
+
+  # unionpays
+  get 'feedbacks/:ExternalOrderNo', :to => 'unionpays#feedbacks'
+  post '/', :to => 'unionpays#union_pay'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
