@@ -60,14 +60,16 @@
                 android:padding="5dp" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
                 android:id="@+id/BuyImage"
                 android:contentDescription="@drawable/loading"
                 android:src="@drawable/loading"
                 android:padding="5dp"
                 android:layout_gravity="center"
-                android:scaleType="centerInside" />
+                android:scaleType="fitCenter"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp" />
 
             <LinearLayout
                 android:orientation="horizontal"
