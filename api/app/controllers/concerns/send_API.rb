@@ -16,6 +16,7 @@ module Send_API
     hash = JSON.parse(res[2..-1].to_s)
 
     hash['Product'][0]['SellPriceCNY'] = hash['Product'][0]['SellPriceCNY'].ceil.to_i
+    hash['Product'][0]['ProductIntroduction'] = hash['Product'][0]['ProductIntroduction'].gsub(/<br>/, "\n")
 
     photos = ['LargeIcon', 'SmallIcon']
     (1..8).each { |num| photos << 'ProductPhoto' + num.to_s }
