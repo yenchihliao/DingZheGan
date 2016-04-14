@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411161040) do
+ActiveRecord::Schema.define(version: 20160414101118) do
 
   create_table "products", primary_key: "ProductSN", force: :cascade do |t|
     t.integer  "ProductVendor"
     t.string   "ProductTitle"
     t.string   "ProductNo"
     t.integer  "SellPrice"
-    t.float    "SellPriceCNY"
+    t.integer  "SellPriceCNY"
     t.integer  "ProductQuantity"
     t.string   "ProductIntroduction"
     t.string   "StyleTitleA"

@@ -15,6 +15,8 @@ module Send_API
     res = Net::HTTP.get(uri).force_encoding("UTF-8")
     hash = JSON.parse(res[2..-1].to_s)
 
+    hash['Product'][0]['SellPriceCNY'] = hash['Product'][0]['SellPriceCNY'].ceil.to_i
+
     photos = ['LargeIcon', 'SmallIcon']
     (1..8).each { |num| photos << 'ProductPhoto' + num.to_s }
     photos.each do |photo|
