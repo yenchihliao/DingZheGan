@@ -48,6 +48,14 @@ module Send_API
     hash = JSON.parse(res.to_s)
   end
 
+  def query_order_by_orderNo(id)
+    hash = query_order
+
+    hash['Order'].select! { |order|  order['ExternalOrderNo'] == id }
+
+    hash
+  end
+
   def set_time_key
     @unix_time = Time.now.to_i
 
