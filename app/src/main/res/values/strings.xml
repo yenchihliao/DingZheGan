@@ -6,9 +6,15 @@
     <string name="KnowledgeTitleDescription">(List Title)</string>
     <string name="TeaImage1Description">(Tea Image 1)</string>
     <string name="Tea1TextFrameDescription">(Tea 1 TextFrame)</string>
+    <string name="TextFrameDescription">(TextFrame)</string>
     <string name="InfoButtonDescription">(Info Button)</string>
     <string name="BuyButtonDescription">(Buy Button)</string>
-    <string name="ShoppingTitle">我要买茶</string>
+    <string name="PreviousPageDescription">(Previous Page Button)</string>
+    <string name="NextPageDescription">(Next Page Button)</string>
+    <string name="Page1">第1頁</string>
+    <string name="ShoppingTitle">好茶清单</string>
+    <string name="InfoTitle">好茶详情</string>
+    <string name="BuyTitle">购买好茶</string>
     <string name="KnowledgeTitle">泡茶秘诀</string>
     <string name="GameTitle">玩游戏</string>
     <string name="AchieveTitle">我的成就</string>
