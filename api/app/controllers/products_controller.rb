@@ -28,12 +28,6 @@ class ProductsController < ApplicationController
     parse_products
   end
 
-  # POST /products/1
-  # POST /products/1.json
-  def single_update
-    create_update_product(params[:ProductSN].to_i)
-  end
-
   private
 
     def create_update_vendor(id, name)
