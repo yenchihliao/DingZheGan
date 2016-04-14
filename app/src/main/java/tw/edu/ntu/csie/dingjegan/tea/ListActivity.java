@@ -120,7 +120,8 @@ public class ListActivity extends AppCompatActivity {
     public void GoBuyTea1(View view) {
         Intent intent = new Intent(this, BuyActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5 * (pagenum - 1) + 1);
+        bundle.putInt("ItemNum", 5*(pagenum-1));
+        bundle.putIntArray("ItemNumsArray",teaitems);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -128,7 +129,8 @@ public class ListActivity extends AppCompatActivity {
     public void GoBuyTea2(View view) {
         Intent intent = new Intent(this, BuyActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5*(pagenum-1)+2);
+        bundle.putInt("ItemNum", 5*(pagenum-1)+1);
+        bundle.putIntArray("ItemNumsArray", teaitems);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -136,7 +138,8 @@ public class ListActivity extends AppCompatActivity {
     public void GoBuyTea3(View view) {
         Intent intent = new Intent(this, BuyActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5*(pagenum-1)+3);
+        bundle.putInt("ItemNum", 5*(pagenum-1)+2);
+        bundle.putIntArray("ItemNumsArray", teaitems);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -144,7 +147,8 @@ public class ListActivity extends AppCompatActivity {
     public void GoBuyTea4(View view) {
         Intent intent = new Intent(this, BuyActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5*(pagenum-1)+4);
+        bundle.putInt("ItemNum", 5*(pagenum-1)+3);
+        bundle.putIntArray("ItemNumsArray", teaitems);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -152,7 +156,8 @@ public class ListActivity extends AppCompatActivity {
     public void GoBuyTea5(View view) {
         Intent intent = new Intent(this, BuyActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5*(pagenum-1)+5);
+        bundle.putInt("ItemNum", 5*(pagenum-1)+4);
+        bundle.putIntArray("ItemNumsArray", teaitems);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -160,7 +165,8 @@ public class ListActivity extends AppCompatActivity {
     public void GoInfoTea1(View view) {
         Intent intent = new Intent(this, InfoActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5*(pagenum-1)+1);
+        bundle.putInt("ItemNum", 5*(pagenum-1));
+        bundle.putIntArray("ItemNumsArray", teaitems);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -168,7 +174,8 @@ public class ListActivity extends AppCompatActivity {
     public void GoInfoTea2(View view) {
         Intent intent = new Intent(this, InfoActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5*(pagenum-1)+2);
+        bundle.putInt("ItemNum", 5*(pagenum-1)+1);
+        bundle.putIntArray("ItemNumsArray", teaitems);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -176,7 +183,8 @@ public class ListActivity extends AppCompatActivity {
     public void GoInfoTea3(View view) {
         Intent intent = new Intent(this, InfoActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5*(pagenum-1)+3);
+        bundle.putInt("ItemNum", 5*(pagenum-1)+2);
+        bundle.putIntArray("ItemNumsArray", teaitems);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -184,7 +192,8 @@ public class ListActivity extends AppCompatActivity {
     public void GoInfoTea4(View view) {
         Intent intent = new Intent(this, InfoActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5*(pagenum-1)+4);
+        bundle.putInt("ItemNum", 5*(pagenum-1)+3);
+        bundle.putIntArray("ItemNumsArray", teaitems);
         intent.putExtras(bundle);
         startActivity(intent);
     }
@@ -192,7 +201,8 @@ public class ListActivity extends AppCompatActivity {
     public void GoInfoTea5(View view) {
         Intent intent = new Intent(this, InfoActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5*(pagenum-1)+5);
+        bundle.putInt("ItemNum", 5*(pagenum-1)+4);
+        bundle.putIntArray("ItemNumsArray", teaitems);
         intent.putExtras(bundle);
         startActivity(intent);
     }

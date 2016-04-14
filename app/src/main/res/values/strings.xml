@@ -19,6 +19,8 @@
     <string name="GameTitle">玩游戏</string>
     <string name="AchieveTitle">我的成就</string>
     <string name="Tea1">加载中</string>
+    <string name="LoadingTitle">商品加载中</string>
+    <string name="Blank"> </string>
     <string name="Tea1Price">¥999.00/盒</string>
     <string name="Tea1Info">商品规格:文汤一包150克；武汤一包150克\n商品特色：杉木原木礼盒搭配『文汤』、『武汤』，两种茶款皆是奇莱山高山乌龙茶由传统竹编焙笼细细烘焙。 『文汤』在慢火细细烘焙后，茶汤细致绵密、入喉滑顺，表现优雅细致的兰花香。 『武汤』呈现出温暖有深度而浑厚的口感，入口回甘明显！</string>
     <string name="Tea2">精致一斤杉木礼盒</string>

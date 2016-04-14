@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Title"
+                android:text="@string/LoadingTitle"
                 android:id="@+id/ViewItemName"
                 android:textSize="30sp"
                 android:padding="5dp" />
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/ViewImage"
                 android:contentDescription="@string/TeaImage1Description"
-                android:src="@drawable/tea1"
+                android:src="@drawable/loading"
                 android:padding="5dp"
                 android:layout_gravity="center"
                 android:scaleType="centerInside" />
@@ -72,7 +72,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Price"
+                android:text="@string/Blank"
                 android:id="@+id/ViewPrice"
                 android:padding="5dp"
                 android:textSize="20sp" />
@@ -86,13 +86,13 @@
                 android:background="?android:selectableItemBackground"
                 android:padding="5dp"
                 android:contentDescription="@string/BuyButtonDescription"
-                android:onClick="GoBuyTea1"
+                android:onClick="GoBuyTea"
                 android:layout_gravity="center_horizontal" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Info"
+                android:text="@string/Blank"
                 android:id="@+id/ViewInfo"
                 android:padding="5dp"
                 android:textSize="20sp" />
