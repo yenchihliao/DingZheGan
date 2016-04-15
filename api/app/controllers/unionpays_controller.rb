@@ -21,9 +21,13 @@ class UnionpaysController < ApplicationController
 
   # POST /
   def union_pay
-    if params[:scode] == 'EID006501'
-      Unionpay.create(:ExternalOrderNo => params[:orderid], :orderno => params[:orderno], :amount => params[:amout].to_f, :currcode => params[:currcode], :memo => params[:memo], :resptime => params[:resptime], :status => params[:status].to_i, :respcode => params[:respcode], :rmbrate => params[:rmbrate].to_f, :sign => params[:sign])
+    key = md5_generate params[:scode] + params[:orderno] + params[:orderid] + params[:amount] + params[:currcode] + params[:status] + '12345678'
+
+    if params[:scode] != 'EID006501' or key != params[:sign]
+      return
     end
+
+    Unionpay.create(:ExternalOrderNo => params[:orderid], :orderno => params[:orderno], :amount => params[:amout].to_f, :currcode => params[:currcode], :memo => params[:memo], :resptime => params[:resptime], :status => params[:status].to_i, :respcode => params[:respcode], :rmbrate => params[:rmbrate].to_f, :sign => params[:sign])
 
     id = params[:orderid]
     if Order.exists?(ExternalOrderNo: id)
@@ -32,17 +36,21 @@ class UnionpaysController < ApplicationController
       data.delete('created_at')
       data.delete('updated_at')
 
+      data['ExternalOrderNo'] = params[:orderno]
+      data['Param'] = params[:currcode] + ',' + params[:resptime] + ',' + params[:rmbrate]
+
       if params[:status].to_i == 1
-        data['ExternalOrderNo'] = params[:orderno]
         data['Result'] = 1
         data['PaymentResult'] = 1
-        data['Param'] = params[:currcode] + ',' + params[:resptime] + ',' + params[:rmbrate]
+      else
+        data['Result'] = 2
+        data['PaymentResult'] = 2
       end
 
       create_order(data)
+
+      head :no_content
     end
-      
-    head :no_content
   end
 
 end

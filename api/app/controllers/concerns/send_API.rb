@@ -85,12 +85,16 @@ module Send_API
     hash = JSON.parse(res.to_s)
   end
 
+  def md5_generate(str)
+    md5 = Digest::MD5.new
+    md5.update str
+    md5.hexdigest
+  end
+
   def set_time_key
     @unix_time = Time.now.to_i
 
-    md5 = Digest::MD5.new
-    md5.update @unix_time.to_s + @key_str
-    @key = md5.hexdigest
+    @key = md5_generate @unix_time.to_s + @key_str
   end
 
 end
