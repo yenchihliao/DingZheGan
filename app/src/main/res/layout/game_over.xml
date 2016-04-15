@@ -156,7 +156,8 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:layout_marginRight="30dp"
-            android:layout_marginLeft="30dp">
+            android:layout_marginLeft="30dp"
+            android:onClick="BackMainActivity">
 
             <ImageButton
                 android:layout_width="fill_parent"

@@ -64,9 +64,14 @@
             android:label="@string/app_name">
         </activity>
         <activity
-            android:name="AchieveActivity"
+            android:name="CheckActivity"
             android:label="@string/app_name">
         </activity>
+        <activity
+            android:name="TutActivity"
+            android:label="@string/app_name">
+        </activity>
+
         <activity
             android:name="com.unionpaysdk.web.WebviewActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
