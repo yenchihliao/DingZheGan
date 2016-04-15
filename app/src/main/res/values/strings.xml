@@ -22,6 +22,7 @@
     <string name="KnowledgeTitle">泡茶秘诀</string>
     <string name="GameTitle">玩游戏</string>
     <string name="CheckTitle">查询订单</string>
+    <string name="SelectOrder">选择订单编号</string>
     <string name="Tea1">加载中</string>
     <string name="LoadingTitle">商品加载中</string>
     <string name="Home">回主菜单</string>
@@ -58,4 +59,6 @@
     <string name="ServerOrders">http://52.69.107.107:3000/orders/</string>
     <string name="ServerUnionpay">http://52.69.107.107:3000/feedbacks/</string>
     <string name="payCallBackUrl">http://52.69.107.107:3000/</string>
+    <string name="ServerCancel">http://52.69.107.107:3000/cancel</string>
+    <string name="Cancel">取消此订单</string>
 </resources>

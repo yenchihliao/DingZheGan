@@ -130,7 +130,7 @@ public class InfoActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             if (result == null){
-                //task.execute(null);
+                task.execute(null);
                 Title.setText("暂无商品名称");
                 Price.setText("暂无商品售价");
                 Info.setText("暂无商品资料");
@@ -139,16 +139,23 @@ public class InfoActivity extends AppCompatActivity {
             JsonObject myObject = new JsonParser().parse(result).getAsJsonObject();
             int status = myObject.get("status").getAsInt();
             //System.out.println(status);
-            // TODO:if (status == 1)
-            JsonObject data = myObject.getAsJsonObject("data");
-            String imageURL = data.get("ProductPhoto1").getAsString();
-            if (imageURL.equals("none")){
-                imageURL = data.get("LargeIcon").getAsString();
+            if (status == 0){
+                JsonObject data = myObject.getAsJsonObject("data");
+                String imageURL = data.get("ProductPhoto1").getAsString();
+                if (imageURL.equals("none")){
+                    imageURL = data.get("LargeIcon").getAsString();
+                }
+                task.execute(imageURL);
+                Title.setText(data.get("ProductTitle").getAsString());
+                Price.setText("售价:¥"+data.get("SellPriceCNY").getAsString());
+                Info.setText(data.get("ProductIntroduction").getAsString());
+            }else{
+                task.execute(null);
+                Title.setText("暂无商品名称");
+                Price.setText("暂无商品售价");
+                Info.setText("暂无商品资料");
             }
-            task.execute(imageURL);
-            Title.setText(data.get("ProductTitle").getAsString());
-            Price.setText("售价:¥"+data.get("SellPriceCNY").getAsString());
-            Info.setText(data.get("ProductIntroduction").getAsString());
+
         }
 
     }

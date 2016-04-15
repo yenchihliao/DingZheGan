@@ -291,20 +291,25 @@ public class ListActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             if (result == null){
-                //task.execute(null);
+                task.execute(null);
                 TV.setText("暂无商品名称");
                 return;
             }
             JsonObject myObject = new JsonParser().parse(result).getAsJsonObject();
             int status = myObject.get("status").getAsInt();
             //System.out.println(status);
-            // TODO:if (status == 1)
-            JsonObject data = myObject.getAsJsonObject("data");
-            String imageURL = data.get("LargeIcon").getAsString();
-            String title = data.get("ProductTitle").getAsString();
+            if (status == 0){
+                JsonObject data = myObject.getAsJsonObject("data");
+                String imageURL = data.get("LargeIcon").getAsString();
+                String title = data.get("ProductTitle").getAsString();
 
-            task.execute(imageURL);
-            TV.setText(title);
+                task.execute(imageURL);
+                TV.setText(title);
+            }else{
+                TV.setText("暂无商品名称");
+                task.execute(null);
+            }
+
         }
 
     }
