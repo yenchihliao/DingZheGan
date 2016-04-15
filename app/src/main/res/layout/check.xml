@@ -96,8 +96,7 @@
                     android:background="@color/colorText"
                     android:textSize="25sp"
                     android:textColor="#FFFFFF"
-                    android:layout_margin="10dp"
-                    android:onClick="GoCancel" />
+                    android:layout_margin="10dp" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

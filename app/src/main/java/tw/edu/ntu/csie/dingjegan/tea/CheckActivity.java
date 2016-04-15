@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -40,10 +41,15 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.content.DialogInterface;
+
 public class CheckActivity extends AppCompatActivity {
 
     ArrayList<String> ExternalOrderNos = new ArrayList<String>();
     private CheckActivity ca = this;
+    String Selected_ExternalOrderNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,15 +82,23 @@ public class CheckActivity extends AppCompatActivity {
 
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,int position, long arg3) {
+                Selected_ExternalOrderNo = ExternalOrderNos.get(position);
                 AsyncHttpRequest task = new AsyncHttpRequest(ca, OrderText);
                 task.execute(getResources().getString(R.string.ServerUnionpay)
-                        +/*ExternalOrderNos.get(position)*/112112) ;
+                        +/*ExternalOrderNos.get(position)*/112112) ;//TODO:change back!!
                 AsyncHttpRequest2 task2 = new AsyncHttpRequest2(ca, OrderText2);
                 task2.execute(getResources().getString(R.string.ServerOrders)
                                 +ExternalOrderNos.get(position)) ;
             }
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
+            }
+        });
+
+        Button btn = (Button) findViewById(R.id.CancelButton);
+        btn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                onCancel(Selected_ExternalOrderNo);
             }
         });
 
@@ -109,6 +123,35 @@ public class CheckActivity extends AppCompatActivity {
             toast.show();
         }
 
+    }
+
+    public void onCancel(final String ExternalOrderNo) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+                builder.setMessage("确认取消订单?");
+                builder.setCancelable(false);
+
+                builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        GoCancel(ExternalOrderNo);
+                    }
+                });
+
+                builder.setNegativeButton("否", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                    }
+                });
+
+                AlertDialog alert = builder.create();
+                alert.show();
+    }
+
+    public void GoCancel (String ExternalOrderNo){
+        JsonObject json = new JsonObject();
+        json.addProperty("ExternalOrderNo", ExternalOrderNo);
+        //POST OrderNo
+        AsyncHttpRequestCancel taskCancel = new AsyncHttpRequestCancel(this);
+        taskCancel.execute(getResources().getString(R.string.ServerCancel), json.toString());
     }
 
 
@@ -170,8 +213,10 @@ public class CheckActivity extends AppCompatActivity {
                 return;
             }
             JsonObject myObject = new JsonParser().parse(result).getAsJsonObject();
-            int status = myObject.get("status").getAsInt();
-            Log.e("Status", "Call order feedback status: " + status);
+            int status = -1;
+            if((myObject.get("status") != JsonNull.INSTANCE) && (myObject.get("status").getAsString().length() != 0)){
+                status = myObject.get("status").getAsInt();
+            }
             if (status == 0){
                 JsonObject data = myObject.getAsJsonObject("data");
                 String status_text;
@@ -251,8 +296,10 @@ public class CheckActivity extends AppCompatActivity {
                 return;
             }
             JsonObject myObject = new JsonParser().parse(result).getAsJsonObject();
-            int status = myObject.get("status").getAsInt();
-            Log.e("Status", "Call order feedback status: " + status);
+            int status = -1;
+            if((myObject.get("status") != JsonNull.INSTANCE) && (myObject.get("status").getAsString().length() != 0)){
+                status = myObject.get("status").getAsInt();
+            }
             if (status == 0){
                 JsonObject data = myObject.getAsJsonObject("data");
 
@@ -291,16 +338,140 @@ public class CheckActivity extends AppCompatActivity {
                 }else{
                     DeliverTime = "查无配送时间";
                 }
+                String DealWithResult;
+                if((data.get("DealWithResult") != JsonNull.INSTANCE) && (data.get("DealWithResult").getAsString().length() != 0)){
+                    DealWithResult = data.get("DealWithResult").getAsString();
+                    if(DealWithResult.equals("1")){
+                        DealWithResult = "待处理";
+                    }else if(DealWithResult.equals("2")){
+                        DealWithResult = "已确认";
+                    }else if(DealWithResult.equals("3")){
+                        DealWithResult = "取消订单";
+                    }else if(DealWithResult.equals("4")){
+                        DealWithResult = "已配送";
+                    }else if(DealWithResult.equals("5")){
+                        DealWithResult = "退单";
+                    }else if(DealWithResult.equals("6")){
+                        DealWithResult = "已退货";
+                    }else{
+                        DealWithResult = "不明";
+                    }
+                }else{
+                    DealWithResult = "查无订单状态";
+                }
                 String text = "商品名称 : "+ItemName
                         +"\n订购人姓名 : "+OrderName
                         +"\n收件人姓名 : "+ConsigneeName
+                        +"\n配送时间 : "+DeliverTime
                         +"\n付款状态 : "+PaymentResult
-                        +"\n配送时间 : "+DeliverTime;
+                        +"\n订单状态 : "+DealWithResult;
                 TV.setText(text);
             }else{
                 TV.setText("查询错误");
             }
         }
 
+    }
+
+    public class AsyncHttpRequestCancel extends AsyncTask<String, Void, String> {
+
+        private Activity mainActivity;
+
+        public AsyncHttpRequestCancel(Activity activity) {
+
+            this.mainActivity = activity;
+
+        }
+
+        @Override
+        protected String doInBackground(String... url) {
+            final MediaType JSON
+                    = MediaType.parse("application/json; charset=utf-8");
+
+            OkHttpClient client = new OkHttpClient();
+            String s = null;
+            try {
+                RequestBody body = RequestBody.create(JSON, url[1]);
+                Request request = new Request.Builder()
+                        .url(url[0])
+                        .post(body)
+                        .build();
+                Response response = client.newCall(request).execute();
+                s = response.body().string();
+            }catch(IOException e) {
+                Context context = getApplicationContext();
+                CharSequence text = "服务器维护中，请见谅";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                finish();
+            }
+            return s;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            if (result == null){
+                Context context = getApplicationContext();
+                CharSequence text = "服务器错误";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                return;
+            }
+            System.out.println(result);
+            JsonObject myObject = new JsonParser().parse(result).getAsJsonObject();
+            int status = -1;
+            if((myObject.get("status") != JsonNull.INSTANCE) && (myObject.get("status").getAsString().length() != 0)){
+                status = myObject.get("status").getAsInt();
+            }
+            if (status == 0){
+                try {
+                    OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput("order_numbers.txt", Context.MODE_PRIVATE));
+                    outputStreamWriter.write("");
+                    outputStreamWriter.close();
+                }
+                catch (IOException e) {
+                    Log.e("Exception", "File clear failed: " + e.toString());
+                }
+                ExternalOrderNos.remove(Selected_ExternalOrderNo);
+                for(int i = 0; i < ExternalOrderNos.size();i++){
+                    writeToFile(ExternalOrderNos.get(i));
+                }
+
+                Context context = getApplicationContext();
+                CharSequence text = "订单取消成功\n取消订单编号:"+Selected_ExternalOrderNo;
+                int duration = Toast.LENGTH_LONG;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                finish();
+            }else if (status == 1){
+                String errmsg = "订单取消失败";
+                if((myObject.get("data") != JsonNull.INSTANCE) && (myObject.get("data").getAsString().length() != 0)){
+                    errmsg = myObject.get("data").getAsString();
+                }
+                Context context = getApplicationContext();
+                int duration = Toast.LENGTH_LONG;
+                Toast toast = Toast.makeText(context, errmsg, duration);
+                toast.show();
+            }else{
+                Context context = getApplicationContext();
+                CharSequence text = "订单取消失败";
+                int duration = Toast.LENGTH_LONG;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
+        }
+    }
+    private void writeToFile(String data) {
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput("order_numbers.txt", Context.MODE_APPEND));
+            outputStreamWriter.write(data);
+            outputStreamWriter.write("\n");
+            outputStreamWriter.close();
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
     }
 }
