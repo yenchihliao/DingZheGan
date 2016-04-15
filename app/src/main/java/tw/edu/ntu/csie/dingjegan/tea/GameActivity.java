@@ -304,7 +304,7 @@ public class GameActivity  extends AppCompatActivity {
                     lastClick = 3;
                     potGroup[3].animate().cancel();
                     potGroup[3].animate().setDuration(100);
-                    potGroup[3].animate().translationYBy(-40);
+                    potGroup[3].animate().translationYBy(dp2Px(-20));
                     potGroup[3].animate().start();
                     frameAnimation = (AnimationDrawable) mid[3].getBackground();
                     frameAnimation.stop();
@@ -352,7 +352,6 @@ public class GameActivity  extends AppCompatActivity {
     public void BackMainActivity (View view){
         this.finish();
         Intent intent = new Intent (this, MainActivity.class);
-        intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY); // Adds the FLAG_ACTIVITY_NO_HISTORY flag
         startActivity(intent);
     }
     public void RestartGameActivity (View view){
@@ -399,7 +398,6 @@ public class GameActivity  extends AppCompatActivity {
         Log.d("CDA", "onBackPressed Called");
         this.finish();
         Intent intent = new Intent (this, MainActivity.class);
-        intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY); // Adds the FLAG_ACTIVITY_NO_HISTORY flag
         startActivity(intent);
     }
     private void freeAnimationDrawable(AnimationDrawable animationDrawable) {

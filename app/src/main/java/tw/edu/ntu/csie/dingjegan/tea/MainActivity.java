@@ -7,16 +7,30 @@ import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+    boolean played;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        played = false;
+        Animation rotateTea;
+        ImageView tea = (ImageView) findViewById(R.id.Tea);
+        tea.setImageResource(R.drawable.tea);
+        rotateTea = new RotateAnimation(-3.0f,3.0f,Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+                0.5f);
+        rotateTea.setDuration(800);
+        rotateTea.setRepeatCount(Animation.INFINITE);
+        rotateTea.setRepeatMode(Animation.REVERSE);
+        tea.setAnimation(rotateTea);
+        rotateTea.startNow();
     }
     public void GoListActivity (View view){
         ConnectivityManager connMgr = (ConnectivityManager)
@@ -43,10 +57,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void GoGameActivity (View view){
-        this.finish();
-        Intent intent = new Intent (this, GameActivity.class);
-        intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY); // Adds the FLAG_ACTIVITY_NO_HISTORY flag
-        startActivity(intent);
+        if(played == true) {
+            this.finish();
+            Intent intent = new Intent(this, GameActivity.class);
+            intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY); // Adds the FLAG_ACTIVITY_NO_HISTORY flag
+            startActivity(intent);
+        }else{
+            played = true;
+            Intent intent = new Intent(this, TutActivity.class);
+            startActivity(intent);
+        }
     }
     public void GoCheckActivity (View view){
         ConnectivityManager connMgr = (ConnectivityManager)

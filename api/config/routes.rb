@@ -11,8 +11,9 @@ Rails.application.routes.draw do
 
   # orders
   get 'orders', :to => 'orders#index'
-  get 'orders/:OrderNo', :to => 'orders#query_by_orderNo'
+  get 'orders/:ExternalOrderNo', :to => 'orders#query_by_external_order_no'
   post 'orders', :to => 'orders#order'
+  post 'cancel', :to => 'orders#cancel'
 
   # unionpays
   get 'feedbacks/:ExternalOrderNo', :to => 'unionpays#feedbacks'

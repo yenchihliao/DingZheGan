@@ -353,7 +353,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Score"
+            android:text="@string/YourScore"
             android:id="@+id/ScoreText"
             android:layout_marginTop="6dp"
             android:textColor="#F2F2F2"
