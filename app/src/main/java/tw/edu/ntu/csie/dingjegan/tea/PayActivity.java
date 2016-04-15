@@ -21,8 +21,12 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -211,8 +215,9 @@ public class PayActivity extends AppCompatActivity {
         protected void onPostExecute(String result) {
             System.out.println(result);
             if (result.equals("{\"status\":0,\"data\":\"success\"}")){
+                writeToFile(ExternalOrderNo);
                 Context context = getApplicationContext();
-                CharSequence text = "订单传送成功，请继续完成付款";
+                CharSequence text = "订单传送成功，请继续完成付款，再至'查询订单'查询状态\n订单编号:"+ExternalOrderNo;
                 int duration = Toast.LENGTH_LONG;
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
@@ -224,6 +229,18 @@ public class PayActivity extends AppCompatActivity {
                 Toast toast = Toast.makeText(context, text, duration);
                 toast.show();
             }
+        }
+    }
+
+    private void writeToFile(String data) {
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput("order_numbers.txt", Context.MODE_APPEND));
+            outputStreamWriter.write(data);
+            outputStreamWriter.write("\n");
+            outputStreamWriter.close();
+        }
+        catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
         }
     }
 }

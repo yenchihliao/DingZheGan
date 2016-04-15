@@ -64,7 +64,7 @@
             android:label="@string/app_name">
         </activity>
         <activity
-            android:name="AchieveActivity"
+            android:name="CheckActivity"
             android:label="@string/app_name">
         </activity>
         <activity
