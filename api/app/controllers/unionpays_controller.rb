@@ -21,7 +21,7 @@ class UnionpaysController < ApplicationController
 
   # POST /
   def union_pay
-    key = md5_generate params[:scode] + params[:orderno] + params[:orderid] + params[:amount] + params[:currcode] + params[:status] + '12345678'
+    key = md5_generate params[:scode] + params[:orderno] + params[:orderid] + params[:amount] + params[:currcode] + params[:status] + params[:respcode] + '12345678'
 
     if params[:scode] != 'EID006501' or key != params[:sign]
       return
