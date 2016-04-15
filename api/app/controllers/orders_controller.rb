@@ -17,16 +17,23 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # Get /orders/1.json
   def query_by_external_order_no
-    result = query_order_by_external_order_no(params[:ExternalOrderNo])
+    id = params[:ExternalOrderNo]
+    if Unionpay.exists?(ExternalOrderNo: id)
+      data = JSON.parse(Unionpay.find_by_ExternalOrderNo(id).to_json)
 
-    if result['ErrorCode'] == 0
-      if result['Order'].empty?
-        render json: { :status => 1, :data => '無此編號' }
+      result = query_order_by_external_order_no(data['orderno'])
+
+      if result['ErrorCode'] == 0
+        if result['Order'].empty?
+          render json: { :status => 1, :data => '無此編號' }
+        else
+          render json: { :status => 0, :data => result['Order'][0] }
+        end
       else
-        render json: { :status => 0, :data => result['Order'][0] }
+        render json: { :status => 1, :data => result['ErrorMsg'] }
       end
     else
-      render json: { :status => 1, :data => result['ErrorMsg'] }
+      render json: { :status => 1, :data => '無此編號' }
     end
   end
 

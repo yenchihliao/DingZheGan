@@ -33,8 +33,10 @@ class UnionpaysController < ApplicationController
       data.delete('updated_at')
 
       if params[:status].to_i == 1
+        data['ExternalOrderNo'] = params[:orderno]
         data['Result'] = 1
         data['PaymentResult'] = 1
+        data['Param'] = params[:currcode] + ',' + params[:resptime] + ',' + params[:rmbrate]
       end
 
       create_order(data)
