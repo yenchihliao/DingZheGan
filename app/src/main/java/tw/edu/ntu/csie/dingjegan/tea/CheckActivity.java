@@ -83,9 +83,9 @@ public class CheckActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,int position, long arg3) {
                 Selected_ExternalOrderNo = ExternalOrderNos.get(position);
-                AsyncHttpRequest task = new AsyncHttpRequest(ca, OrderText);
+                /*AsyncHttpRequest task = new AsyncHttpRequest(ca, OrderText);
                 task.execute(getResources().getString(R.string.ServerUnionpay)
-                        +/*ExternalOrderNos.get(position)*/112112) ;//TODO:change back!!
+                        +ExternalOrderNos.get(position)) ;*/
                 AsyncHttpRequest2 task2 = new AsyncHttpRequest2(ca, OrderText2);
                 task2.execute(getResources().getString(R.string.ServerOrders)
                                 +ExternalOrderNos.get(position)) ;

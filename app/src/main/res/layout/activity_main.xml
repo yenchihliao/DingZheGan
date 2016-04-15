@@ -76,16 +76,6 @@
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-<<<<<<< HEAD
-                android:id="@+id/GameButton"
-                android:src="@drawable/playbutton"
-                android:scaleType="centerInside"
-                android:background="?android:selectableItemBackground"
-                android:contentDescription="@string/GameButtonDescription"
-                android:onClick="GoGameActivity"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="20" />
-=======
                 android:layout_weight="1"
                 android:layout_marginLeft="30dp">
 
@@ -140,7 +130,6 @@
                     android:textSize="20sp"
                     android:textColor="@color/colorText" />
             </LinearLayout>
->>>>>>> origin/master
 
         </LinearLayout>
 
@@ -154,16 +143,6 @@
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-<<<<<<< HEAD
-                android:id="@+id/CheckButton"
-                android:src="@drawable/searchbutton2"
-                android:scaleType="centerInside"
-                android:background="?android:selectableItemBackground"
-                android:contentDescription="@string/CheckButtonDescription"
-                android:onClick="GoCheckActivity"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="20" />
-=======
                 android:layout_weight="1"
                 android:layout_marginLeft="30dp">
 
@@ -183,7 +162,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/GameTitle"
-                    android:id="@+id/textView"
+                    android:id="@+id/GameTextView"
                     android:layout_gravity="center"
                     android:textSize="20sp"
                     android:textColor="@color/colorText" />
@@ -199,20 +178,20 @@
                 <ImageButton
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:id="@+id/imageButton2"
-                    android:src="@drawable/achievebutton"
+                    android:id="@+id/CheckButton"
+                    android:src="@drawable/searchbutton2"
                     android:scaleType="centerInside"
                     android:background="?android:selectableItemBackground"
-                    android:contentDescription="@string/KnowledgeButtonDescription"
-                    android:onClick="GoAchieveActivity"
+                    android:contentDescription="@string/CheckButtonDescription"
+                    android:onClick="GoCheckActivity"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="20" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/AchieveTitle"
-                    android:id="@+id/textView2"
+                    android:text="@string/CheckTitle"
+                    android:id="@+id/CheckTextView"
                     android:layout_gravity="center"
                     android:textSize="20sp"
                     android:textColor="@color/colorText" />
@@ -224,20 +203,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="35">
->>>>>>> origin/master
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-<<<<<<< HEAD
-                android:text="@string/CheckTitle"
-                android:id="@+id/textView2"
-                android:layout_gravity="center"
-                android:textSize="20sp"
-                android:textColor="@color/colorText" />
-=======
                 android:id="@+id/dummy2" />
->>>>>>> origin/master
         </LinearLayout>
     </LinearLayout>
 
