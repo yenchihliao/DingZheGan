@@ -7,8 +7,11 @@ import android.net.NetworkInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +20,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Animation rotateTea;
+        ImageView tea = (ImageView) findViewById(R.id.Tea);
+        tea.setImageResource(R.drawable.tea);
+        rotateTea = new RotateAnimation(-3.0f,3.0f,Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+                0.5f);
+        rotateTea.setDuration(800);
+        rotateTea.setRepeatCount(Animation.INFINITE);
+        rotateTea.setRepeatMode(Animation.REVERSE);
+        tea.setAnimation(rotateTea);
+        rotateTea.startNow();
     }
     public void GoListActivity (View view){
         ConnectivityManager connMgr = (ConnectivityManager)
