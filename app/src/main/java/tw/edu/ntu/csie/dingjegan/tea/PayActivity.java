@@ -93,24 +93,24 @@ public class PayActivity extends AppCompatActivity {
         JsonObject json = new JsonObject();
         //TODO:Eliminate illegal characters ,;:{}[]...
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        JsonElement jelem = gson.fromJson(OrderName.getText().toString(), JsonElement.class);
-        json.add("OrderName", jelem);
-        jelem = gson.fromJson(OrderAddress.getText().toString(), JsonElement.class);
-        json.add("OrderAddress", jelem);
-        jelem = gson.fromJson(OrderEmail.getText().toString(), JsonElement.class);
-        json.add("OrderEmail", jelem);
-        jelem = gson.fromJson(OrderPhone.getText().toString(), JsonElement.class);
-        json.add("OrderPhone", jelem);
-        jelem = gson.fromJson(ConsigneeName.getText().toString(), JsonElement.class);
-        json.add("ConsigneeName", jelem);
-        jelem = gson.fromJson(ConsigneeAddress.getText().toString(), JsonElement.class);
-        json.add("ConsigneeAddress", jelem);
-        jelem = gson.fromJson(ConsigneeEmail.getText().toString(), JsonElement.class);
-        json.add("ConsigneeEmail", jelem);
-        jelem = gson.fromJson(ConsigneePhone.getText().toString(), JsonElement.class);
-        json.add("ConsigneePhone", jelem);
-        jelem = gson.fromJson(DeliverTime.getText().toString(), JsonElement.class);
-        json.add("DeliverTime", jelem);
+        //JsonElement jelem = gson.fromJson(OrderName.getText().toString(), JsonElement.class);
+        json.addProperty("OrderName", OrderName.getText().toString());
+        //jelem = gson.fromJson(OrderAddress.getText().toString(), JsonElement.class);
+        json.addProperty("OrderAddress", OrderAddress.getText().toString());
+        //jelem = gson.fromJson(OrderEmail.getText().toString(), JsonElement.class);
+        json.addProperty("OrderEmail", OrderEmail.getText().toString());
+        //jelem = gson.fromJson(OrderPhone.getText().toString(), JsonElement.class);
+        json.addProperty("OrderPhone", OrderPhone.getText().toString());
+        //jelem = gson.fromJson(ConsigneeName.getText().toString(), JsonElement.class);
+        json.addProperty("ConsigneeName", ConsigneeName.getText().toString());
+        //jelem = gson.fromJson(ConsigneeAddress.getText().toString(), JsonElement.class);
+        json.addProperty("ConsigneeAddress", ConsigneeAddress.getText().toString());
+        //jelem = gson.fromJson(ConsigneeEmail.getText().toString(), JsonElement.class);
+        json.addProperty("ConsigneeEmail", ConsigneeEmail.getText().toString());
+        //jelem = gson.fromJson(ConsigneePhone.getText().toString(), JsonElement.class);
+        json.addProperty("ConsigneePhone", ConsigneePhone.getText().toString());
+        //jelem = gson.fromJson(DeliverTime.getText().toString(), JsonElement.class);
+        json.addProperty("DeliverTime", DeliverTime.getText().toString());
 
         String rand = getRandomString(30);
         SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -123,23 +123,23 @@ public class PayActivity extends AppCompatActivity {
         ExternalOrderNo = sdFormat.format(current)+rand;
         //Log.e("D2",ExternalOrderNo);
 
-        jelem = gson.fromJson(ExternalOrderNo, JsonElement.class);
-        json.add("ExternalOrderNo", jelem);
-        jelem = gson.fromJson(ProductSN.toString(), JsonElement.class);
-        json.add("ProductSN", jelem);
-        jelem = gson.fromJson(Quantity.toString(), JsonElement.class);
-        json.add("Quantity", jelem);
-        jelem = gson.fromJson(Price.toString(), JsonElement.class);
-        json.add("Price", jelem);
-        jelem = gson.fromJson(Amount.toString(), JsonElement.class);
-        json.add("Amount", jelem);
+        //jelem = gson.fromJson(ExternalOrderNo, JsonElement.class);
+        json.addProperty("ExternalOrderNo", ExternalOrderNo);
+        //jelem = gson.fromJson(ProductSN.toString(), JsonElement.class);
+        json.addProperty("ProductSN", ProductSN.toString());
+        //jelem = gson.fromJson(Quantity.toString(), JsonElement.class);
+        json.addProperty("Quantity", Quantity.toString());
+        //jelem = gson.fromJson(Price.toString(), JsonElement.class);
+        json.addProperty("Price", Price.toString());
+        //jelem = gson.fromJson(Amount.toString(), JsonElement.class);
+        json.addProperty("Amount", Amount.toString());
 
-        jelem = gson.fromJson("1", JsonElement.class);
-        json.add("Result", jelem);
-        jelem = gson.fromJson("1", JsonElement.class);
-        json.add("PaymentResult", jelem);
-        jelem = gson.fromJson("TEXT", JsonElement.class);
-        json.add("Param", jelem);
+        //jelem = gson.fromJson("1", JsonElement.class);
+        json.addProperty("Result", "1");
+        //jelem = gson.fromJson("1", JsonElement.class);
+        json.addProperty("PaymentResult", "1");
+        //jelem = gson.fromJson("TEXT", JsonElement.class);
+        json.addProperty("Param", "TEXT");
 
 
         //System.out.println("json ready");
