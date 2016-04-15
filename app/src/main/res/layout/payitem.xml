@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="start|left|top"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="10"
+        android:background="@color/colorPrimaryDark" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/PayTitle"
+            android:id="@+id/PayTitleText"
+            android:textColor="@color/colorWhite"
+            android:textSize="30sp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:id="@+id/BuyTitle"
+            android:src="@drawable/logowhite"
+            android:contentDescription="@string/ListTitleDescription"
+            android:scaleType="fitEnd"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/LoadingTitle"
+                android:id="@+id/PayItemName"
+                android:textSize="30sp"
+                android:layout_margin="5dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/PayText"
+                android:id="@+id/PayText"
+                android:textSize="20sp"
+                android:layout_marginLeft="5dp"
+                android:layout_margin="5dp" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/OrderName"
+                android:textSize="25sp"
+                android:layout_marginLeft="20dp"
+                android:hint="@string/OrderName" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/OrderAddress"
+                android:textSize="25sp"
+                android:layout_marginLeft="20dp"
+                android:hint="@string/OrderAddress" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/OrderEmail"
+                android:textSize="25sp"
+                android:layout_marginLeft="20dp"
+                android:hint="@string/OrderEmail" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/OrderPhone"
+                android:textSize="25sp"
+                android:layout_marginLeft="20dp"
+                android:hint="@string/OrderPhone"
+                android:phoneNumber="true" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ConsigneeName"
+                android:textSize="25sp"
+                android:layout_marginLeft="20dp"
+                android:hint="@string/ConsigneeName" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ConsigneeAddress"
+                android:textSize="25sp"
+                android:layout_marginLeft="20dp"
+                android:hint="@string/ConsigneeAddress" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ConsigneeEmail"
+                android:textSize="25sp"
+                android:layout_marginLeft="20dp"
+                android:hint="@string/ConsigneeEmail" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ConsigneePhone"
+                android:textSize="25sp"
+                android:layout_marginLeft="20dp"
+                android:hint="@string/ConsigneePhone"
+                android:phoneNumber="true" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/DeliverTime"
+                android:textSize="25sp"
+                android:layout_marginLeft="20dp"
+                android:hint="@string/DeliverTime"
+                android:phoneNumber="false" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/PayIt"
+                android:id="@+id/PatIt"
+                android:textColor="#FFFFFF"
+                android:textSize="25sp"
+                android:padding="5dp"
+                android:background="@color/colorText"
+                android:layout_gravity="center"
+                android:onClick="PostServer"
+                android:layout_marginBottom="20dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

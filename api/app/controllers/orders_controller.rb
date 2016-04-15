@@ -17,6 +17,17 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # Get /orders/1.json
   def query_by_orderNo
+    result = query_order_by_orderNo(params[:OrderNo].to_s)
+
+    if result['ErrorCode'] == 0
+      if result['Order'].empty?
+        render json: { :status => 1, :data => '無此編號' }
+      else
+        render json: { :status => 0, :data => result['Order'][0] }
+      end
+    else
+      render json: { :status => 1, :data => result['ErrorMsg'] }
+    end
   end
 
   # POST /orders

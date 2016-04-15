@@ -15,6 +15,9 @@ module Send_API
     res = Net::HTTP.get(uri).force_encoding("UTF-8")
     hash = JSON.parse(res[2..-1].to_s)
 
+    hash['Product'][0]['SellPriceCNY'] = hash['Product'][0]['SellPriceCNY'].ceil.to_i
+    hash['Product'][0]['ProductIntroduction'] = hash['Product'][0]['ProductIntroduction'].gsub(/<br>/, "\n")
+
     photos = ['LargeIcon', 'SmallIcon']
     (1..8).each { |num| photos << 'ProductPhoto' + num.to_s }
     photos.each do |photo|
@@ -44,6 +47,14 @@ module Send_API
 
     res = Net::HTTP.get(uri).force_encoding("UTF-8")
     hash = JSON.parse(res.to_s)
+  end
+
+  def query_order_by_orderNo(id)
+    hash = query_order
+
+    hash['Order'].select! { |order| order['ExternalOrderNo'] == id }
+
+    hash
   end
 
   def set_time_key

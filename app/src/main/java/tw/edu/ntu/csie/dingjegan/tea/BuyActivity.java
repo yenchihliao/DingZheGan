@@ -46,7 +46,7 @@ public class BuyActivity extends AppCompatActivity {
 
         //GET JSON
         AsyncHttpRequest task = new AsyncHttpRequest(this,new DownloadImageTask(ItemImage), ItemTitle, ItemPrice);
-        task.execute("http://140.112.214.131:3000/products/" + teaitems[itemnum]);
+        task.execute(getResources().getString(R.string.ServerProducts) + teaitems[itemnum]);
 
         EditText number = (EditText)findViewById(R.id.number);
         number.setKeyListener(null);
@@ -76,6 +76,27 @@ public class BuyActivity extends AppCompatActivity {
         number.setText(String.valueOf(val));
     }
 
+    public void GoPay (View view){
+        Intent intent = new Intent (this, PayActivity.class);
+        Bundle bundle = new Bundle();
+
+        bundle.putInt("ProductSN",teaitems[itemnum]);
+
+        EditText number = (EditText)findViewById(R.id.number);
+        if(Integer.parseInt(number.getText().toString()) == 0) {
+            return;}
+        bundle.putInt("Quantity", Integer.parseInt(number.getText().toString()));
+
+        TextView price = (TextView)findViewById(R.id.BuyPrice);
+        bundle.putInt("Price", Integer.parseInt(price.getText().toString()));
+
+        TextView title = (TextView)findViewById(R.id.BuyItemName);
+        bundle.putString("ItemTitle", title.getText().toString());
+
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
+
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
 
@@ -85,7 +106,7 @@ public class BuyActivity extends AppCompatActivity {
 
         protected Bitmap doInBackground(String... urls) {
             String urldisplay = urls[0];
-            if(urldisplay == null){
+            if(urldisplay == null || urldisplay.equals("none")){
                 return null;
             }
             Bitmap mIcon11 = null;
@@ -138,7 +159,12 @@ public class BuyActivity extends AppCompatActivity {
                 Response response = client.newCall(request).execute();
                 s = response.body().string();
             }catch (IOException e){
-
+                Context context = getApplicationContext();
+                CharSequence text = "服务器维护中，请见谅";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+                finish();
             }
             return s;
         }
@@ -157,10 +183,13 @@ public class BuyActivity extends AppCompatActivity {
             //System.out.println(status);
             // TODO:if (status == 1)
             JsonObject data = myObject.getAsJsonObject("data");
-            String imageURL = data.get("LargeIcon").getAsString();
+            String imageURL = data.get("ProductPhoto1").getAsString();
+            if (imageURL.equals("none")){
+                imageURL = data.get("LargeIcon").getAsString();
+            }
             task.execute(imageURL);
             Title.setText(data.get("ProductTitle").getAsString());
-            Price.setText("售价:¥"+data.get("SellPriceCNY").getAsString());
+            Price.setText(data.get("SellPriceCNY").getAsString());
             remaining_items = data.get("ProductQuantity").getAsInt();
         }
 
