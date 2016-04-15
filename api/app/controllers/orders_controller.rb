@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # Get /orders/1.json
   def query_by_external_order_no
-    result = query_order_by_external_order_no(params[:ExternalOrderNo].to_s)
+    result = query_order_by_external_order_no(params[:ExternalOrderNo])
 
     if result['ErrorCode'] == 0
       if result['Order'].empty?
@@ -33,21 +33,15 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def order
-    data = { :ExternalOrderNo => params[:ExternalOrderNo], :ProductSN => params[:ProductSN], :StyleA => params[:StyleA], :StyleB => params[:StyleB], :Quantity => params[:Quantity], :Price => params[:Price], :Amount => params[:Amount], :OrderName => params[:OrderName], :OrderAddress => params[:OrderAddress], :OrderEmail => params[:OrderEmail], :OrderPhone => params[:OrderPhone], :ConsigneeName => params[:ConsigneeName], :ConsigneeAddress => params[:ConsigneeAddress], :ConsigneeEmail => params[:ConsigneeEmail], :ConsigneePhone => params[:ConsigneePhone], :DeliverTime => params[:DeliverTime], :Result => params[:Result], :PaymentResult => params[:PaymentResult], :Param => params[:Param] }
-    
-    result = create_order(data)
+    Order.create(:ExternalOrderNo => params[:ExternalOrderNo], :ProductSN => params[:ProductSN], :StyleA => params[:StyleA], :StyleB => params[:StyleB], :Quantity => params[:Quantity], :Price => params[:Price], :Amount => params[:Amount], :OrderName => params[:OrderName], :OrderAddress => params[:OrderAddress], :OrderEmail => params[:OrderEmail], :OrderPhone => params[:OrderPhone], :ConsigneeName => params[:ConsigneeName], :ConsigneeAddress => params[:ConsigneeAddress], :ConsigneeEmail => params[:ConsigneeEmail], :ConsigneePhone => params[:ConsigneePhone], :DeliverTime => params[:DeliverTime], :Result => params[:Result], :PaymentResult => params[:PaymentResult], :Param => params[:Param])
 
-    if result['ErrorCode'] == 0
-      render json: { :status => 0, :data => 'success' }
-    else
-      render json: { :status => 1, :data => result['ErrorMsg'] }
-    end
+    render json: { :status => 0, :data => 'success' }
   end
 
   # POST /cancel
   # POST /cancel.json
   def cancel
-    result = cancel_order(params[:ExternalOrderNo].to_s)
+    result = cancel_order(params[:ExternalOrderNo])
 
     if result['ErrorCode'] == 0
       render json: { :status => 0, :data => 'success' }

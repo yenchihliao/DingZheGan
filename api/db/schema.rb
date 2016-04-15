@@ -11,7 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414181425) do
+ActiveRecord::Schema.define(version: 20160415164324) do
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "ExternalOrderNo"
+    t.integer  "ProductSN"
+    t.string   "StyleA"
+    t.string   "StyleB"
+    t.integer  "Quantity"
+    t.integer  "Price"
+    t.integer  "Amount"
+    t.string   "OrderName"
+    t.string   "OrderAddress"
+    t.string   "OrderEmail"
+    t.string   "OrderPhone"
+    t.string   "ConsigneeName"
+    t.string   "ConsigneeAddress"
+    t.string   "ConsigneeEmail"
+    t.string   "ConsigneePhone"
+    t.string   "DeliverTime"
+    t.integer  "Result"
+    t.integer  "PaymentResult"
+    t.text     "Param"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "orders", ["ExternalOrderNo"], name: "index_orders_on_ExternalOrderNo", unique: true
 
   create_table "products", primary_key: "ProductSN", force: :cascade do |t|
     t.integer  "ProductVendor"
@@ -39,8 +65,9 @@ ActiveRecord::Schema.define(version: 20160414181425) do
 
   add_index "products", ["ProductSN"], name: "index_products_on_ProductSN", unique: true
 
-  create_table "unionpays", primary_key: "ExternalOrderNo", force: :cascade do |t|
-    t.string   "orderid"
+  create_table "unionpays", id: false, force: :cascade do |t|
+    t.string   "ExternalOrderNo"
+    t.string   "orderno"
     t.float    "amount"
     t.string   "currcode"
     t.string   "memo"
@@ -49,8 +76,8 @@ ActiveRecord::Schema.define(version: 20160414181425) do
     t.string   "respcode"
     t.float    "rmbrate"
     t.string   "sign"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "unionpays", ["ExternalOrderNo"], name: "index_unionpays_on_ExternalOrderNo", unique: true

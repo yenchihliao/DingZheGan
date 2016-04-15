@@ -31,8 +31,7 @@ class ProductsController < ApplicationController
   private
 
     def create_update_vendor(id, name)
-      if Vendor.exists?(VendorSN: id)
-      else
+      unless Vendor.exists?(VendorSN: id)
         Vendor.create(:VendorSN => id, :VendorTitle => name)
       end
     end
