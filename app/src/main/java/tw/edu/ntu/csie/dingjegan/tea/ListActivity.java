@@ -291,7 +291,7 @@ public class ListActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             if (result == null){
-                task.execute(null);
+                //task.execute(null);
                 TV.setText("暂无商品名称");
                 return;
             }

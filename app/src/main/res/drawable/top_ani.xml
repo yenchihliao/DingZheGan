@@ -1,0 +1,19 @@
+ <!-- Pot top animation -->
+ <animation-list
+    android:id="@+id/selected"
+    android:oneshot="false"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/top01" android:duration="50" />
+    <item android:drawable="@drawable/top02" android:duration="50" />
+    <item android:drawable="@drawable/top03" android:duration="50" />
+    <item android:drawable="@drawable/top04" android:duration="50" />
+    <item android:drawable="@drawable/top05" android:duration="50" />
+    <item android:drawable="@drawable/top06" android:duration="50" />
+    <item android:drawable="@drawable/top07" android:duration="50" />
+    <item android:drawable="@drawable/top08" android:duration="50" />
+    <item android:drawable="@drawable/top09" android:duration="50" />
+    <item android:drawable="@drawable/top10" android:duration="50" />
+    <item android:drawable="@drawable/top11" android:duration="50" />
+    <item android:drawable="@drawable/top12" android:duration="50" />
+    <item android:drawable="@drawable/top13" android:duration="50" />
+ </animation-list>

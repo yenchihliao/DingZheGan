@@ -43,8 +43,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void GoGameActivity (View view){
-        //Intent intent = new Intent (this, GameActivity.class);
-        //startActivity(intent);
+        this.finish();
+        Intent intent = new Intent (this, GameActivity.class);
+        intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY); // Adds the FLAG_ACTIVITY_NO_HISTORY flag
+        startActivity(intent);
     }
     public void GoAchieveActivity (View view){
         //Intent intent = new Intent (this, AchieveActivity.class);

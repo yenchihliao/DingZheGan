@@ -130,7 +130,7 @@ public class InfoActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             if (result == null){
-                task.execute(null);
+                //task.execute(null);
                 Title.setText("暂无商品名称");
                 Price.setText("暂无商品售价");
                 Info.setText("暂无商品资料");

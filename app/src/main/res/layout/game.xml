@@ -7,18 +7,182 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/linearLayout">
-        >
+        android:layout_below="@+id/linearLayout"
+        android:id="@+id/downRL">
 
         <ImageView
             android:layout_width="fill_parent"
-            android:layout_height="60dp"
+            android:layout_height="80dp"
+            android:id="@+id/flashBar2"
+            android:background="#BDD684"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="110dp" />
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="20dp"
+            android:id="@+id/bar2"
+            android:background="#95AB63"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="140dp" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/potGroup3"
+            android:layout_alignTop="@+id/potGroup5"
+            android:layout_toLeftOf="@+id/potGroup4"
+            android:layout_toStartOf="@+id/potGroup4"
+            android:layout_marginRight="10dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="34dp"
+                android:id="@+id/PotTop3"
+                android:background="@drawable/top" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="36dp"
+                android:id="@+id/PotMid3"
+                android:background="@drawable/mid00" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/imageView7"
+                android:background="@drawable/bottom" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/potGroup5"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/potGroup4"
+            android:layout_toEndOf="@+id/potGroup4"
+            android:layout_marginLeft="10dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="34dp"
+                android:id="@+id/PotTop5"
+                android:background="@drawable/top" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="36dp"
+                android:id="@+id/PotMid5"
+                android:background="@drawable/mid00" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/imageView10"
+                android:background="@drawable/bottom" />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/potGroup4"
+            android:layout_alignTop="@+id/potGroup3"
+            android:layout_centerHorizontal="true" >
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="34dp"
+                android:id="@+id/PotTop4"
+                android:background="@drawable/top" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="36dp"
+                android:id="@+id/PotMid4"
+                android:background="@drawable/mid00" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/imageView13"
+                android:background="@drawable/bottom" />
+
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/PotBtn4"
+            android:layout_alignBottom="@+id/potGroup3"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/matte" />
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/PotBtn3"
+            android:layout_alignBottom="@+id/potGroup5"
+            android:layout_toLeftOf="@+id/potGroup4"
+            android:layout_toStartOf="@+id/potGroup4"
+            android:background="@drawable/matte"
+            android:layout_marginRight="10dp" />
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/PotBtn5"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/potGroup5"
+            android:layout_toEndOf="@+id/potGroup4"
+            android:background="@drawable/matte"
+            android:layout_marginLeft="10dp" />
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
+            android:id="@+id/down_dying_down"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="110dp"
+            android:background="@drawable/downdying"
+            />
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="110dp"
+            android:id="@+id/up_dying_down"
+            android:background="@drawable/updying"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linearLayout"
+        android:id="@+id/upRL">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
             android:id="@+id/flashBar1"
             android:background="#BDD684"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="120dp" />
+            android:layout_marginBottom="110dp" />
 
         <ImageView
             android:layout_width="fill_parent"
@@ -31,40 +195,150 @@
             android:layout_marginBottom="140dp" />
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true">
+            android:orientation="vertical"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/potGroup0"
+            android:layout_alignTop="@+id/potGroup2"
+            android:layout_toLeftOf="@+id/potGroup1"
+            android:layout_toStartOf="@+id/potGroup1"
+            android:layout_marginRight="10dp">
 
-            <Button
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:text="New Button"
-                android:id="@+id/TestBtn1"
-                android:layout_marginBottom="50dp"
-                android:layout_gravity="bottom" />
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="34dp"
+                android:id="@+id/PotTop0"
+                android:background="@drawable/top" />
 
-            <Button
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:text="New Button"
-                android:id="@+id/TestBtn2"
-                android:layout_marginBottom="50dp"
-                android:layout_gravity="bottom" />
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="36dp"
+                android:id="@+id/PotMid0"
+                android:background="@drawable/mid00" />
 
-            <Button
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:text="New Button"
-                android:id="@+id/TestBtn3"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="50dp" />
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/PotBottom"
+                android:background="@drawable/bottom" />
+
         </LinearLayout>
 
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/potGroup2"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/potGroup2"
+            android:layout_toEndOf="@+id/potGroup1"
+            android:layout_marginLeft="10dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="34dp"
+                android:id="@+id/PotTop1"
+                android:background="@drawable/top" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="36dp"
+                android:id="@+id/PotMid2"
+                android:background="@drawable/mid00" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/imageView6"
+                android:background="@drawable/bottom" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/potGroup1"
+            android:layout_alignTop="@+id/potGroup0"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="34dp"
+                android:id="@+id/PotTop2"
+                android:background="@drawable/top" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="36dp"
+                android:id="@+id/PotMid1"
+                android:background="@drawable/mid00" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/imageView3"
+                android:background="@drawable/bottom" />
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/PotBtn0"
+            android:layout_alignBottom="@+id/potGroup2"
+            android:layout_toLeftOf="@+id/potGroup1"
+            android:layout_toStartOf="@+id/potGroup1"
+            android:background="@drawable/matte"
+            android:layout_marginRight="10dp" />
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/PotBtn1"
+            android:layout_alignBottom="@+id/potGroup0"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/matte" />
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/PotBtn2"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/potGroup2"
+            android:layout_toEndOf="@+id/potGroup1"
+            android:background="@drawable/matte"
+            android:layout_marginLeft="10dp" />
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
+            android:id="@+id/down_dying_up"
+            android:background="@drawable/downdying"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="110dp" />
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
+            android:id="@+id/up_dying_up"
+            android:background="@drawable/updying"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="110dp" />
+
+
     </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/transition" />
+    </FrameLayout>
 
     <LinearLayout
         android:orientation="vertical"
@@ -98,65 +372,6 @@
             android:textColor="#F2F2F2"
             android:gravity="center|center_horizontal" />
     </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/linearLayout">
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="60dp"
-            android:id="@+id/flashBar2"
-            android:background="#BDD684"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="120dp" />
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="20dp"
-            android:id="@+id/bar2"
-            android:background="#95AB63"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="140dp" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:gravity="center_horizontal">
-
-            <Button
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:text="New Button"
-                android:id="@+id/TestBtn4"
-                android:layout_marginBottom="50dp"
-                android:layout_gravity="bottom" />
-
-            <Button
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:text="New Button"
-                android:id="@+id/TestBtn5"
-                android:layout_marginBottom="50dp"
-                android:layout_gravity="bottom" />
-
-            <Button
-                android:layout_width="120dp"
-                android:layout_height="50dp"
-                android:text="New Button"
-                android:id="@+id/TestBtn6"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="50dp" />
-
-        </LinearLayout>
-    </RelativeLayout>
 
 
 </RelativeLayout>

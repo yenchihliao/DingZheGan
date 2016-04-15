@@ -1,0 +1,22 @@
+ <!-- Pot mid animation -->
+ <animation-list
+    android:id="@+id/selected"
+    android:oneshot="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/mid00" android:duration="50" />
+    <item android:drawable="@drawable/mid01" android:duration="50" />
+    <item android:drawable="@drawable/mid02" android:duration="50" />
+    <item android:drawable="@drawable/mid03" android:duration="50" />
+    <item android:drawable="@drawable/mid04" android:duration="50" />
+    <item android:drawable="@drawable/mid05" android:duration="50" />
+    <item android:drawable="@drawable/mid06" android:duration="50" />
+    <item android:drawable="@drawable/mid07" android:duration="50" />
+    <item android:drawable="@drawable/mid08" android:duration="50" />
+    <item android:drawable="@drawable/mid09" android:duration="50" />
+    <item android:drawable="@drawable/mid10" android:duration="50" />
+    <item android:drawable="@drawable/mid11" android:duration="50" />
+    <item android:drawable="@drawable/mid12" android:duration="50" />
+    <item android:drawable="@drawable/mid13" android:duration="50" />
+    <item android:drawable="@drawable/mid14" android:duration="50" />
+    <item android:drawable="@drawable/mid00" android:duration="50" />
+ </animation-list>

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:background="#BDD982"
+        android:id="@+id/HighScoreBox"
+        android:layout_marginBottom="15dp"
+        android:layout_above="@+id/linearLayout2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/HighScore"
+            android:id="@+id/textView4"
+            android:layout_marginTop="6dp"
+            android:textColor="#F2F2F2"
+            android:gravity="center_horizontal"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="HighScore"
+            android:id="@+id/HighScore"
+            android:layout_marginTop="6dp"
+            android:autoText="false"
+            android:textSize="48sp"
+            android:textColor="#F2F2F2"
+            android:gravity="center|center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="#BDD982"
+        android:id="@+id/linearLayout2" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/YourScore"
+            android:id="@+id/textView3"
+            android:layout_marginTop="6dp"
+            android:textColor="#F2F2F2"
+            android:gravity="center_horizontal"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="YourScore"
+            android:id="@+id/EndScore"
+            android:layout_marginTop="6dp"
+            android:autoText="false"
+            android:textSize="48sp"
+            android:textColor="#F2F2F2"
+            android:gravity="center|center_horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        android:layout_weight="40"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/buyandreplay">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="30dp" >
+
+            <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/gameover_buy"
+                android:src="@drawable/shoppingbutton"
+                android:scaleType="centerInside"
+                android:background="?android:selectableItemBackground"
+                android:contentDescription="@string/ShoppingButtonDescription"
+                android:onClick="GameOverListActivity"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="20" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/BuyTitle"
+                android:id="@+id/textView6"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/colorText" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="30dp" >
+
+            <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/gameover_replay"
+                android:src="@drawable/replaybutton"
+                android:scaleType="centerInside"
+                android:background="?android:selectableItemBackground"
+                android:onClick="RestartGameActivity"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="20" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Replay"
+                android:id="@+id/textView7"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/colorText" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="40"
+        android:layout_below="@+id/buyandreplay"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="20dp"
+        android:id="@+id/home">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp">
+
+            <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/gameover_home"
+                android:src="@drawable/homebutton"
+                android:scaleType="centerInside"
+                android:background="?android:selectableItemBackground"
+                android:contentDescription="@string/KnowledgeButtonDescription"
+                android:onClick="BackMainActivity"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="20"
+                android:layout_marginLeft="0dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Home"
+                android:id="@+id/textView5"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:textColor="@color/colorText"
+                android:layout_marginLeft="0dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="40"
+        android:layout_above="@+id/HighScoreBox"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ggImageView"
+            android:src="@drawable/gg"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
+            android:layout_centerHorizontal="true" />
+    </LinearLayout>
+</RelativeLayout>

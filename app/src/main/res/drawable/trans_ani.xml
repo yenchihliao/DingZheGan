@@ -1,0 +1,31 @@
+ <!-- Pot trans animation -->
+ <animation-list
+    android:id="@+id/selected"
+    android:oneshot="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/trans04" android:duration="50" />
+    <item android:drawable="@drawable/trans05" android:duration="50" />
+    <item android:drawable="@drawable/trans06" android:duration="50" />
+    <item android:drawable="@drawable/trans07" android:duration="50" />
+    <item android:drawable="@drawable/trans08" android:duration="50" />
+    <item android:drawable="@drawable/trans09" android:duration="50" />
+    <item android:drawable="@drawable/trans10" android:duration="50" />
+    <item android:drawable="@drawable/trans11" android:duration="50" />
+    <item android:drawable="@drawable/trans12" android:duration="50" />
+    <item android:drawable="@drawable/trans13" android:duration="50" />
+    <item android:drawable="@drawable/trans14" android:duration="50" />
+    <item android:drawable="@drawable/trans15" android:duration="50" />
+    <item android:drawable="@drawable/trans16" android:duration="50" />
+    <item android:drawable="@drawable/trans17" android:duration="50" />
+    <item android:drawable="@drawable/trans18" android:duration="50" />
+    <item android:drawable="@drawable/trans19" android:duration="50" />
+    <item android:drawable="@drawable/trans20" android:duration="50" />
+    <item android:drawable="@drawable/trans21" android:duration="50" />
+    <item android:drawable="@drawable/trans22" android:duration="50" />
+    <item android:drawable="@drawable/trans23" android:duration="50" />
+    <item android:drawable="@drawable/trans24" android:duration="50" />
+    <item android:drawable="@drawable/trans25" android:duration="50" />
+    <item android:drawable="@drawable/trans26" android:duration="50" />
+    <item android:drawable="@drawable/trans27" android:duration="50" />
+    <item android:drawable="@drawable/trans28" android:duration="50" />
+ </animation-list>
