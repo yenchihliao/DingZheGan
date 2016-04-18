@@ -352,6 +352,8 @@ public class GameActivity  extends AppCompatActivity {
     public void BackMainActivity (View view){
         this.finish();
         Intent intent = new Intent (this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
     }
     public void RestartGameActivity (View view){
