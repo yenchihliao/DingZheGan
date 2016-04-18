@@ -72,6 +72,20 @@ public class PayActivity extends AppCompatActivity {
 
 
     }
+    public void GoCopy (View view){
+        EditText OrderName = (EditText)findViewById(R.id.OrderName);
+        EditText OrderAddress = (EditText)findViewById(R.id.OrderAddress);
+        EditText OrderEmail = (EditText)findViewById(R.id.OrderEmail);
+        EditText OrderPhone = (EditText)findViewById(R.id.OrderPhone);
+        EditText ConsigneeName = (EditText)findViewById(R.id.ConsigneeName);
+        EditText ConsigneeAddress = (EditText)findViewById(R.id.ConsigneeAddress);
+        EditText ConsigneeEmail = (EditText)findViewById(R.id.ConsigneeEmail);
+        EditText ConsigneePhone = (EditText)findViewById(R.id.ConsigneePhone);
+        ConsigneeName.setText(OrderName.getText());
+        ConsigneeAddress.setText(OrderAddress.getText());
+        ConsigneeEmail.setText(OrderEmail.getText());
+        ConsigneePhone.setText(OrderPhone.getText());
+    }
     public void GoUnionPay (View view){
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
