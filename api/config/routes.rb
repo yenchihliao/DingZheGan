@@ -2,12 +2,12 @@ Rails.application.routes.draw do
   # products
   get 'products', :to => 'products#index'
   get 'products/:ProductSN', :to => 'products#show'
-  post 'products', :to => 'products#update'
+  # post 'products', :to => 'products#update'
 
   # vendors
-  get 'vendors', :to => 'vendors#index'
-  get 'vendors/:VendorSN', :to => 'vendors#show'
-  get 'vendors/:VendorSN/products', :to => 'vendors#show_products'
+  # get 'vendors', :to => 'vendors#index'
+  # get 'vendors/:VendorSN', :to => 'vendors#show'
+  # get 'vendors/:VendorSN/products', :to => 'vendors#show_products'
 
   # orders
   get 'orders', :to => 'orders#index'
@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   post 'cancel', :to => 'orders#cancel'
 
   # unionpays
-  get 'feedbacks/:ExternalOrderNo', :to => 'unionpays#feedbacks'
+  # get 'feedbacks/:ExternalOrderNo', :to => 'unionpays#feedbacks'
   post '/', :to => 'unionpays#union_pay'
 
   # The priority is based upon order of creation: first created -> highest priority.
