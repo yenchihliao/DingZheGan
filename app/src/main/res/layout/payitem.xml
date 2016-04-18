@@ -72,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/OrderName"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="20dp"
                 android:hint="@string/OrderName" />
 
@@ -80,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/OrderAddress"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="20dp"
                 android:hint="@string/OrderAddress" />
 
@@ -88,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/OrderEmail"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="20dp"
                 android:hint="@string/OrderEmail" />
 
@@ -96,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/OrderPhone"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="20dp"
                 android:hint="@string/OrderPhone"
                 android:phoneNumber="true" />
@@ -105,7 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/ConsigneeName"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="20dp"
                 android:hint="@string/ConsigneeName" />
 
@@ -113,7 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/ConsigneeAddress"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="20dp"
                 android:hint="@string/ConsigneeAddress" />
 
@@ -121,7 +121,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/ConsigneeEmail"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="20dp"
                 android:hint="@string/ConsigneeEmail" />
 
@@ -129,7 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/ConsigneePhone"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="20dp"
                 android:hint="@string/ConsigneePhone"
                 android:phoneNumber="true" />
@@ -138,7 +138,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/DeliverTime"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:layout_marginLeft="20dp"
                 android:hint="@string/DeliverTime"
                 android:phoneNumber="false" />

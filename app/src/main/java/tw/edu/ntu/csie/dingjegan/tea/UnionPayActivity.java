@@ -103,7 +103,7 @@ public class UnionPayActivity extends AppCompatActivity {
         Bundle recv =this.getIntent().getExtras();
         String resptime = recv.getString("resptime");
         orderid = recv.getString("ExternalOrderNo");
-        amount = recv.getInt("amount");
+        amount = recv.getFloat("amount");
 
         setContentView(R.layout.activity_unionpay_webview);
         ctx=this;

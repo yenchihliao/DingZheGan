@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -46,8 +48,8 @@ import com.unionpaysdk.main.*;
 public class PayActivity extends AppCompatActivity {
 
     Integer Quantity = 0;
-    Integer Price = 0;
-    Integer Amount = 0;
+    Float Price = 0f;
+    Float Amount = 0f;
     Integer ProductSN = 0;
     String ExternalOrderNo = null;
     String date = null;
@@ -58,7 +60,7 @@ public class PayActivity extends AppCompatActivity {
         Bundle recv =this.getIntent().getExtras();
         ProductSN = recv.getInt("ProductSN");
         Quantity = recv.getInt("Quantity");
-        Price = recv.getInt("Price");
+        Price = recv.getFloat("Price");
         Amount = Quantity * Price;
         String Title = recv.getString("ItemTitle");
 
@@ -71,15 +73,28 @@ public class PayActivity extends AppCompatActivity {
 
     }
     public void GoUnionPay (View view){
-        Intent intent = new Intent (this, UnionPayActivity.class);
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            Intent intent = new Intent (this, UnionPayActivity.class);
 
-        Bundle bundle = new Bundle();
-        bundle.putString("ExternalOrderNo", ExternalOrderNo);
-        bundle.putString("resptime", date);
-        bundle.putInt("amount",Amount);
-        intent.putExtras(bundle);
+            Bundle bundle = new Bundle();
+            bundle.putString("ExternalOrderNo", ExternalOrderNo);
+            bundle.putString("resptime", date);
+            bundle.putFloat("amount", Amount);
+            intent.putExtras(bundle);
 
-        startActivity(intent);
+            startActivity(intent);
+        } else {
+            Context context = getApplicationContext();
+            CharSequence text = "请连接网络";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
     }
     public void PostServer (View view){
 

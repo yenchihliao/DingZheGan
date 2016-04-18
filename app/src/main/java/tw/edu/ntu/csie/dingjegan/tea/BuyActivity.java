@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -77,24 +79,37 @@ public class BuyActivity extends AppCompatActivity {
     }
 
     public void GoPay (View view){
-        Intent intent = new Intent (this, PayActivity.class);
-        Bundle bundle = new Bundle();
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            Intent intent = new Intent (this, PayActivity.class);
+            Bundle bundle = new Bundle();
 
-        bundle.putInt("ProductSN",teaitems[itemnum]);
+            bundle.putInt("ProductSN",teaitems[itemnum]);
 
-        EditText number = (EditText)findViewById(R.id.number);
-        if(Integer.parseInt(number.getText().toString()) == 0) {
-            return;}
-        bundle.putInt("Quantity", Integer.parseInt(number.getText().toString()));
+            EditText number = (EditText)findViewById(R.id.number);
+            if(Integer.parseInt(number.getText().toString()) == 0) {
+                return;}
+            bundle.putInt("Quantity", Integer.parseInt(number.getText().toString()));
 
-        TextView price = (TextView)findViewById(R.id.BuyPrice);
-        bundle.putInt("Price", Integer.parseInt(price.getText().toString()));
+            TextView price = (TextView)findViewById(R.id.BuyPrice);
+            bundle.putFloat("Price", Float.parseFloat(price.getText().toString()));
 
-        TextView title = (TextView)findViewById(R.id.BuyItemName);
-        bundle.putString("ItemTitle", title.getText().toString());
+            TextView title = (TextView)findViewById(R.id.BuyItemName);
+            bundle.putString("ItemTitle", title.getText().toString());
 
-        intent.putExtras(bundle);
-        startActivity(intent);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } else {
+            Context context = getApplicationContext();
+            CharSequence text = "请连接网络";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
     }
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {

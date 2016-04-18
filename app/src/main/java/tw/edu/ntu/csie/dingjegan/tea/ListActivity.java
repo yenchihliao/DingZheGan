@@ -7,6 +7,8 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -103,11 +106,19 @@ public class ListActivity extends AppCompatActivity {
                 (TextView) findViewById(R.id.TeaTitle4),
                 (TextView) findViewById(R.id.TeaTitle5),
         };
+        //Set prices
+        TextView Prices[]={
+                (TextView) findViewById(R.id.ListPrice1),
+                (TextView) findViewById(R.id.ListPrice2),
+                (TextView) findViewById(R.id.ListPrice3),
+                (TextView) findViewById(R.id.ListPrice4),
+                (TextView) findViewById(R.id.ListPrice5),
+        };
         //GET JSON
         //usage: new DownloadImageTask(img1).execute("http://www.csie.ntu.edu.tw/~b03902051/fc2/station_convert.png");
         int j = 0;
         for(int k = 5*(pagenum-1); k < 5*(pagenum-1)+5 && k < teaitems.length; k++){
-            AsyncHttpRequest task = new AsyncHttpRequest(this,new DownloadImageTask(IVs[j]), TVs[j]);
+            AsyncHttpRequest task = new AsyncHttpRequest(this,new DownloadImageTask(IVs[j]), TVs[j], Prices[j]);
             task.execute(getResources().getString(R.string.ServerProducts)+teaitems[k]);
             j++;
         }
@@ -118,93 +129,223 @@ public class ListActivity extends AppCompatActivity {
     }
 
     public void GoBuyTea1(View view) {
-        Intent intent = new Intent(this, BuyActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5*(pagenum-1));
-        bundle.putIntArray("ItemNumsArray",teaitems);
-        intent.putExtras(bundle);
-        startActivity(intent);
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            Intent intent = new Intent(this, BuyActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("ItemNum", 5*(pagenum-1));
+            bundle.putIntArray("ItemNumsArray",teaitems);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } else {
+            Context context = getApplicationContext();
+            CharSequence text = "请连接网络";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
     }
 
     public void GoBuyTea2(View view) {
-        Intent intent = new Intent(this, BuyActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5*(pagenum-1)+1);
-        bundle.putIntArray("ItemNumsArray", teaitems);
-        intent.putExtras(bundle);
-        startActivity(intent);
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            Intent intent = new Intent(this, BuyActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("ItemNum", 5*(pagenum-1)+1);
+            bundle.putIntArray("ItemNumsArray", teaitems);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } else {
+            Context context = getApplicationContext();
+            CharSequence text = "请连接网络";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
     }
 
     public void GoBuyTea3(View view) {
-        Intent intent = new Intent(this, BuyActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5*(pagenum-1)+2);
-        bundle.putIntArray("ItemNumsArray", teaitems);
-        intent.putExtras(bundle);
-        startActivity(intent);
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            Intent intent = new Intent(this, BuyActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("ItemNum", 5*(pagenum-1)+2);
+            bundle.putIntArray("ItemNumsArray", teaitems);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } else {
+            Context context = getApplicationContext();
+            CharSequence text = "请连接网络";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
     }
 
     public void GoBuyTea4(View view) {
-        Intent intent = new Intent(this, BuyActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5*(pagenum-1)+3);
-        bundle.putIntArray("ItemNumsArray", teaitems);
-        intent.putExtras(bundle);
-        startActivity(intent);
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            Intent intent = new Intent(this, BuyActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("ItemNum", 5*(pagenum-1)+3);
+            bundle.putIntArray("ItemNumsArray", teaitems);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } else {
+            Context context = getApplicationContext();
+            CharSequence text = "请连接网络";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
     }
 
     public void GoBuyTea5(View view) {
-        Intent intent = new Intent(this, BuyActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5*(pagenum-1)+4);
-        bundle.putIntArray("ItemNumsArray", teaitems);
-        intent.putExtras(bundle);
-        startActivity(intent);
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            Intent intent = new Intent(this, BuyActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("ItemNum", 5*(pagenum-1)+4);
+            bundle.putIntArray("ItemNumsArray", teaitems);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } else {
+            Context context = getApplicationContext();
+            CharSequence text = "请连接网络";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
     }
 
     public void GoInfoTea1(View view) {
-        Intent intent = new Intent(this, InfoActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5*(pagenum-1));
-        bundle.putIntArray("ItemNumsArray", teaitems);
-        intent.putExtras(bundle);
-        startActivity(intent);
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            Intent intent = new Intent(this, InfoActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("ItemNum", 5*(pagenum-1));
+            bundle.putIntArray("ItemNumsArray", teaitems);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } else {
+            Context context = getApplicationContext();
+            CharSequence text = "请连接网络";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
     }
 
     public void GoInfoTea2(View view) {
-        Intent intent = new Intent(this, InfoActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5*(pagenum-1)+1);
-        bundle.putIntArray("ItemNumsArray", teaitems);
-        intent.putExtras(bundle);
-        startActivity(intent);
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            Intent intent = new Intent(this, InfoActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("ItemNum", 5*(pagenum-1)+1);
+            bundle.putIntArray("ItemNumsArray", teaitems);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } else {
+            Context context = getApplicationContext();
+            CharSequence text = "请连接网络";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
     }
 
     public void GoInfoTea3(View view) {
-        Intent intent = new Intent(this, InfoActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5*(pagenum-1)+2);
-        bundle.putIntArray("ItemNumsArray", teaitems);
-        intent.putExtras(bundle);
-        startActivity(intent);
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            Intent intent = new Intent(this, InfoActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("ItemNum", 5*(pagenum-1)+2);
+            bundle.putIntArray("ItemNumsArray", teaitems);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } else {
+            Context context = getApplicationContext();
+            CharSequence text = "请连接网络";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
     }
 
     public void GoInfoTea4(View view) {
-        Intent intent = new Intent(this, InfoActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5*(pagenum-1)+3);
-        bundle.putIntArray("ItemNumsArray", teaitems);
-        intent.putExtras(bundle);
-        startActivity(intent);
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            Intent intent = new Intent(this, InfoActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("ItemNum", 5*(pagenum-1)+3);
+            bundle.putIntArray("ItemNumsArray", teaitems);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } else {
+            Context context = getApplicationContext();
+            CharSequence text = "请连接网络";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
     }
 
     public void GoInfoTea5(View view) {
-        Intent intent = new Intent(this, InfoActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum", 5*(pagenum-1)+4);
-        bundle.putIntArray("ItemNumsArray", teaitems);
-        intent.putExtras(bundle);
-        startActivity(intent);
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            Intent intent = new Intent(this, InfoActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("ItemNum", 5*(pagenum-1)+4);
+            bundle.putIntArray("ItemNumsArray", teaitems);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } else {
+            Context context = getApplicationContext();
+            CharSequence text = "请连接网络";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
     }
 
     public void GoPrevPage(View view) {
@@ -214,13 +355,26 @@ public class ListActivity extends AppCompatActivity {
     }
 
     public void GoNextPage(View view) {
-        if(pagenum < maxpage){
-            Intent intent = new Intent(this, ListActivity.class);
-            Bundle bundle = new Bundle();
-            bundle.putInt("PageNum", pagenum+1);
-            intent.putExtras(bundle);
-            startActivity(intent);
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            if(pagenum < maxpage){
+                Intent intent = new Intent(this, ListActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("PageNum", pagenum+1);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        } else {
+            Context context = getApplicationContext();
+            CharSequence text = "请连接网络";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
         }
+
     }
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
@@ -264,11 +418,13 @@ public class ListActivity extends AppCompatActivity {
         private Activity mainActivity;
         private DownloadImageTask task;
         private TextView TV;
-        public AsyncHttpRequest(Activity activity,DownloadImageTask task, TextView TV) {
+        private TextView PriceTV;
+        public AsyncHttpRequest(Activity activity,DownloadImageTask task, TextView TV, TextView Prices) {
 
             this.mainActivity = activity;
             this.task = task;
             this.TV = TV;
+            this.PriceTV = Prices;
         }
 
         @Override
@@ -293,6 +449,7 @@ public class ListActivity extends AppCompatActivity {
             if (result == null){
                 task.execute(null);
                 TV.setText("暂无商品名称");
+                PriceTV.setText("暂无商品价格");
                 return;
             }
             JsonObject myObject = new JsonParser().parse(result).getAsJsonObject();
@@ -305,8 +462,10 @@ public class ListActivity extends AppCompatActivity {
 
                 task.execute(imageURL);
                 TV.setText(title);
+                PriceTV.setText("¥"+data.get("SellPriceCNY").getAsString());
             }else{
                 TV.setText("暂无商品名称");
+                PriceTV.setText("暂无商品价格");
                 task.execute(null);
             }
 

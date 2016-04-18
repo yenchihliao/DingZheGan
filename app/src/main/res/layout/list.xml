@@ -138,6 +138,15 @@
 
             </LinearLayout>
 
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ListPrice1"
+                android:textSize="20sp"
+                android:text="@string/ListPrice"
+                android:gravity="center"
+                android:layout_marginBottom="20dp" />
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="200dp"
@@ -219,6 +228,15 @@
                     android:scaleType="centerCrop"
                     android:layout_weight="1" />
             </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ListPrice2"
+                android:textSize="20sp"
+                android:text="@string/ListPrice"
+                android:gravity="center"
+                android:layout_marginBottom="20dp" />
 
             <LinearLayout
                 android:layout_width="fill_parent"
@@ -302,6 +320,15 @@
                     android:layout_weight="1" />
             </LinearLayout>
 
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ListPrice3"
+                android:textSize="20sp"
+                android:text="@string/ListPrice"
+                android:gravity="center"
+                android:layout_marginBottom="20dp" />
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="200dp"
@@ -384,6 +411,15 @@
                     android:layout_weight="1" />
             </LinearLayout>
 
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ListPrice4"
+                android:textSize="20sp"
+                android:text="@string/ListPrice"
+                android:gravity="center"
+                android:layout_marginBottom="20dp" />
+
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="200dp"
@@ -465,6 +501,14 @@
                     android:scaleType="centerCrop"
                     android:layout_weight="1" />
             </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ListPrice5"
+                android:textSize="20sp"
+                android:text="@string/ListPrice"
+                android:gravity="center" />
 
 
         </LinearLayout>

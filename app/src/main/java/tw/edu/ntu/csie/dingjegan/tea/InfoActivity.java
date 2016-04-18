@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -14,6 +16,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -50,12 +53,25 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     public void GoBuyTea (View view){
-        Intent intent = new Intent (this, BuyActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putInt("ItemNum",itemnum);
-        bundle.putIntArray("ItemNumsArray", teaitems);
-        intent.putExtras(bundle);
-        startActivity(intent);
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            Intent intent = new Intent (this, BuyActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putInt("ItemNum",itemnum);
+            bundle.putIntArray("ItemNumsArray", teaitems);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        } else {
+            Context context = getApplicationContext();
+            CharSequence text = "请连接网络";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+
     }
 
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
