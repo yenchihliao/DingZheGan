@@ -102,7 +102,7 @@ public class PayActivity extends AppCompatActivity {
             startActivity(intent);
         } else {
             Context context = getApplicationContext();
-            CharSequence text = "请连接网络";
+            CharSequence text = getResources().getString(R.string.ToastNetwork);
             int duration = Toast.LENGTH_SHORT;
 
             Toast toast = Toast.makeText(context, text, duration);

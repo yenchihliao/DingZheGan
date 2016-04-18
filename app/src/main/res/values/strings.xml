@@ -63,4 +63,5 @@
     <string name="payCallBackUrl">http://52.69.107.107:3000/</string>
     <string name="ServerCancel">http://52.69.107.107:3000/cancel</string>
     <string name="Cancel">取消此订单</string>
+    <string name="ToastNetwork">请连接网络</string>
 </resources>

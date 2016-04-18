@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="TeaImage1" />
+    <item type="id" name="Tea1TextFrame" />
+    <item type="id" name="TeaTitle1" />
+    <item type="id" name="Tea1InfoButton" />
+    <item type="id" name="Tea1BuyButton" />
+    <item type="id" name="TeaImage2" />
+    <item type="id" name="TeaImage3" />
+    <item type="id" name="TeaImage4" />
+</resources>
