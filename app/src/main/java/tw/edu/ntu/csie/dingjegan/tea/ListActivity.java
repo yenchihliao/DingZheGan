@@ -82,8 +82,16 @@ public class ListActivity extends AppCompatActivity {
                     (LinearLayout) findViewById(R.id.listItem4),
                     (LinearLayout) findViewById(R.id.listItem5),
             };
+            TextView PriceTVs[]={
+                    (TextView) findViewById(R.id.ListPrice1),
+                    (TextView) findViewById(R.id.ListPrice2),
+                    (TextView) findViewById(R.id.ListPrice3),
+                    (TextView) findViewById(R.id.ListPrice4),
+                    (TextView) findViewById(R.id.ListPrice5),
+            };
             for(int i = remainder; 0 < i && i < 5; i++){
                 LLs[i].setVisibility(8);//gone
+                PriceTVs[i].setVisibility(8);//gone
             }
         }
         TextView pagetext = (TextView) findViewById(R.id.ListPage);
