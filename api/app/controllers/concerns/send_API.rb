@@ -77,7 +77,7 @@ module Send_API
     @key_str = 'kikistore'
     set_time_key
 
-    uri = URI('http://kikistore.csmuse.com/kikistore/api/cancelOrder.php')
+    uri = URI('http://kikistore.csmuse.com/kikistore/api/kikirace_cancelOrder.php')
     params = { :Username => 'B123070146', :Password => 'b03902107', :OrderNo => orderNo, :Time => @unix_time, :Key => @key }
     uri.query = URI.encode_www_form(params)
 
